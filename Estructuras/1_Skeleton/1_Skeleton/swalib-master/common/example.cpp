@@ -1,13 +1,8 @@
 #include "gameManager.h"
 
-//-----------------------------------------------------------------------------
 int Main(void)
 {
-	gameManager* oManager = new gameManager(); // create obj of my gameManager
-
-	// Load textures
-	
-	
+	gameManager* oManager = new gameManager(); // Create obj gameManager()
 
 	// Init game state.
 	oManager->init();
@@ -27,11 +22,12 @@ int Main(void)
 	}
 
 	// End app.
-	// Unload textures.
 	oManager->shutdownRender();
+	// Unload textures.
 	oManager->shutdown();
 
-	delete oManager;
+	
+	delete oManager; // Delete obj gameManager()
 
 	return 0;
 }

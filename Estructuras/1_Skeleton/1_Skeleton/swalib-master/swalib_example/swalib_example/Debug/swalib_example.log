@@ -1,9 +1,14 @@
-﻿  example.cpp
+﻿  core.cpp
+  example.cpp
+  font.cpp
   init.cpp
+  lodepng.cpp
   logic.cpp
   render.cpp
   setRender.cpp
   shutdown.cpp
   shutdownRender.cpp
+  stdafx.cpp
+  sys_win.cpp
   Generating Code...
-  swalib_example.vcxproj -> C:\Users\guillermo.suarez\Documents\Practicas\Estructuras\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+  swalib_example.vcxproj -> C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Estructuras\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
