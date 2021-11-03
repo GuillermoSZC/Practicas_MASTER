@@ -18,7 +18,10 @@ int Main(void)
 		oManager->mLogic();
 		
 		SYS_Pump();	// Process Windows messages.
-		SYS_Sleep(17);	// To force 60 fps
+		// SYS_Sleep(17);	// To force 60 fps - Practica 2.0
+
+		QueryPerformanceFrequency();
+		QueryPerformanceCounter();
 	}
 
 	// End app.
@@ -30,4 +33,10 @@ int Main(void)
 	delete oManager; // Delete obj gameManager()
 
 	return 0;
+}
+void run(long);
+void run(long elapsed)
+{
+	long incDisp = 100 * elapsed;
+	long playerX = playerX + incDisp;
 }

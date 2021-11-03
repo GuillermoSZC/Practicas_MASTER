@@ -1,0 +1,9 @@
+﻿  lineshapes.cpp
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(102,30): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(113,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(114,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(115,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(116,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(117,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(118,56): warning C4305: 'argument': truncation from 'double' to 'float'
+  Exercise1.vcxproj -> C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\Debug\Exercise1.exe
