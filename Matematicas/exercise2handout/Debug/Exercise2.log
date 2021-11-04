@@ -1,14 +1,2 @@
-﻿  camera.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\camera.h(5,10): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
-  exercise2.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\gl_utils.h(4,10): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
-  gl_utils.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\gl_utils.h(4,10): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
-  lineshapes.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\lineshapes.h(4,10): fatal error C1083: Cannot open include file: 'GL/Glew.h': No such file or directory
-  main.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\main.cpp(2,10): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
-  mesh.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\mesh.h(7,10): fatal error C1083: Cannot open include file: 'GL/Glew.h': No such file or directory
-  node.cpp
-  Generating Code...
+﻿  node.cpp
+  Exercise2.vcxproj -> C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise2handout\Debug\Exercise2.exe

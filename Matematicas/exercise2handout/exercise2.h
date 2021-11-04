@@ -146,6 +146,8 @@ struct Exercise2 {
 		glfwGetCursorPos(window, &prevMousePosX, &prevMousePosY);
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		glfwSetWindowFocusCallback(window, onWindowsFocus);
+
+		
 	}
 
 	void update() {
@@ -200,7 +202,14 @@ struct Exercise2 {
 		// camNode.rotation = quat_from_axis_deg(...)* ...;
 		
 		// TODO: use keys to modify cameraPosition here
-
+		if (glfwGetKey(window, GLFW_KEY_UP))
+		{
+			cameraPosition.z += 1.f;
+		}
+		else if (glfwGetKey(window, GLFW_KEY_DOWN))
+		{
+			cameraPosition.z -= 1.f;
+		}
 		camNode.position = cameraPosition;
 
 		mat4 cameraMatrix = translate( identity_mat4(), cameraPosition*-1.f);

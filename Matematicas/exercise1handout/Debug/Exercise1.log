@@ -1,9 +1,15 @@
-﻿  lineshapes.cpp
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(102,30): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(113,56): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(114,56): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(115,56): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(116,56): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(117,56): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\lineshapes.cpp(118,56): warning C4305: 'argument': truncation from 'double' to 'float'
-  Exercise1.vcxproj -> C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\Debug\Exercise1.exe
+﻿  camera.cpp
+  exercise1.cpp
+  gl_utils.cpp
+  lineshapes.cpp
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(102,30): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(113,45): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(114,45): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(115,45): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(116,45): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(117,45): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\lineshapes.cpp(118,45): warning C4305: 'argument': truncation from 'double' to 'float'
+  main.cpp
+  maths_funcs.cpp
+  Generating Code...
+  Exercise1.vcxproj -> C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\Debug\Exercise1.exe

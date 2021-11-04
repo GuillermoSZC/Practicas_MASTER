@@ -32,12 +32,18 @@ void Node::removeChild(Node& node) {
 void  Node::updateLocal() 
 { 
 	// todo: given position, rotation and scale, create T,R and S such that
+	mat4 T = translate(identity_mat4(), position);
+	mat4 R = quat_to_mat4(rotation);
+	mat4 S = scaler(identity_mat4(), scale);
 
-	//localMatrix = T*R*S;
+	localMatrix = T*R*S;
 
 	// todo: given all above, create Sinv, Rinv and Tinv such that
+	mat4 Tinv = translate(identity_mat4(), position * -1.f);
+	mat4 Rinv = quat_to_mat4(rotation * -1.f);
+	mat4 Sinv = scaler(identity_mat4(), scale * -1.f);
 
-	//localInverseMatrix = Sinv*Rinv*Tinv;
+	localInverseMatrix = Sinv*Rinv*Tinv;
 }
 
 void  Node::updateHierarchy()
