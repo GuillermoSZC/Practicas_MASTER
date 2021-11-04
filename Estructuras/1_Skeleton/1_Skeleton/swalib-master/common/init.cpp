@@ -12,5 +12,3 @@ void gameManager::init()
 		balls[i].gfx = texsmallball;
 	}
 }
-
-

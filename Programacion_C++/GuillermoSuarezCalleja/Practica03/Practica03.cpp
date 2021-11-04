@@ -1,12 +1,11 @@
 #include<iostream>
-#include<string>
 
-bool mCadena(std::string);
-std::string mReverseString(std::string);
+bool mCadena(const char*);
+const char* mReverseString(const char*);
 
 int main() 
 {
-	std::string indice("Hello");
+	const char* indice("Hello");
 
 	if (mCadena(indice))
 	{
@@ -19,20 +18,20 @@ int main()
 	
 }
 
-bool mCadena(std::string _indice) 
+bool mCadena(const char* _indice) 
 {
-	std::string sTabla[] = { "Hello", "Bye" };
-	std::string* ptrTabla = reinterpret_cast<std::string*>(sTabla);
-
+	const char* sTabla[]{ "Hello", "Bye" };
 	int sizeArray = sizeof(sTabla) / sizeof(sTabla[0]);
+
 	bool val = false;
 
 	for (int i = 0; i < sizeArray; ++i)
 	{
+		
 		// std::cout << *(ptrTabla + i) << std::endl;
-		if (*(ptrTabla + i) == _indice) // si la posicion i de la tabla es == al parametro de mCadena..
+		if (*(sTabla + i) == _indice) // si la posicion i de la tabla es == al parametro de mCadena..
 		{
-			std::cout << "Reverse string: " << mReverseString(*(ptrTabla + i)) << std::endl;
+			std::cout << "Reversed " << *(sTabla + i) << " on: " << mReverseString(_indice) << std::endl;
 			val = true;
 		} 
 	}
@@ -40,12 +39,29 @@ bool mCadena(std::string _indice)
 	return val;
 }
 
-std::string mReverseString(std::string _indice)
+const char* mReverseString(const char* _indice)
 {
-	std::string* ptr = &_indice;
-	std::string rev = std::string(_indice.rbegin(), _indice.rend()); // Reverse the string: _indice
+	// std::cout << *(_indice + 0) << std::endl;
+	// std::cout << *(_indice + 1) << std::endl;
+	// std::cout << *(_indice + 2) << std::endl;
+	// std::cout << *(_indice + 3) << std::endl;
+	// std::cout << *(_indice + 4) << std::endl;
+	
+	int iSize = strlen(_indice);
+	char* aux = const_cast<char*>(_indice);
+	int i = 0;
+	int j = iSize;
 
-	*ptr = rev;
+	while (*(_indice + i) != '\0')
+	{
+		// std::cout << *(_indice + i) << std::endl;
+		// std::cout << *(_indice + j) << std::endl;
+		*aux = const_cast<const char*>(*(_indice + j));
+		++i;
+		--j;
+	}
+	// std::cout << aux << std::endl;
+	// std::cout << _indice << std::endl;
 
-	return _indice;
+	return aux;
 }

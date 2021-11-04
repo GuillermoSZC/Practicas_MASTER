@@ -25,4 +25,3 @@ void gameManager::mRender()
 	// Exchanges the front and back buffers
 	SYS_Show();
 }
-
