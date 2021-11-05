@@ -1,15 +1,12 @@
-#pragma once
-#ifndef FileManager_h
-#define FileManager_h
+#include<stdio.h>
+#include<stdlib.h>
 
-typedef fstream file;
 class FileManager
 {
 	public:
-	FileManager();
-	void mOpenFile(char[], int);
-	void mReadFile(file*);
-	void mWriteFile(file*);
-	void mCloseFile(file*);
+	FileManager() = default;
+	void* mOpenFile(const char*, int);
+	void mReadFile(FILE*);
+	char* mWriteFile(FILE*, char*);
+	void mCloseFile(FILE*);
 };
-#endif // FileManager.h

@@ -1,24 +1,2 @@
 ﻿  FileManager.cpp
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(5,21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(5,17): error C2146: syntax error: missing ';' before identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(11,17): error C2061: syntax error: identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(12,18): error C2061: syntax error: identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(13,18): error C2061: syntax error: identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.cpp(12,10): error C2872: 'fstream': ambiguous symbol
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(5,9): message : could be 'int fstream'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\iosfwd(234,7): message : or       'std::fstream'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.cpp(12,14): warning C4459: declaration of 'file' hides global declaration
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(5,17): message : see declaration of 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.cpp(28,21): error C2297: '<<': illegal, right operand has type 'const char [7]'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.cpp(28,9): warning C4552: '<<': result of expression not used
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.cpp(29,27): error C2297: '<<': illegal, right operand has type 'const char [13]'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.cpp(29,9): warning C4552: '<<': result of expression not used
-  Practica05.cpp
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(5,21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(5,17): error C2146: syntax error: missing ';' before identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(11,17): error C2061: syntax error: identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(12,18): error C2061: syntax error: identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\FileManager.h(13,18): error C2061: syntax error: identifier 'file'
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\Practica05.cpp(16,3): error C3861: 'mOpenFile': identifier not found
-C:\Users\Soker\source\repos\GuillermoSuarezCalleja\Practica05\Practica05.cpp(20,3): error C3861: 'mOpenFile': identifier not found
-  Generating Code...
+  Practica05.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Debug\Practica05.exe

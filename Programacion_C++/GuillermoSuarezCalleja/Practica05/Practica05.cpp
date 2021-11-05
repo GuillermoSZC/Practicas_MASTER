@@ -1,28 +1,20 @@
-#include "FileManager.h"
 #include <iostream>
+#include "FileManager.h"
+
 
 using namespace std;
 
 int main() 
 {
-	char name[] = "example.txt";
-	char* ptrName = name;
-	int iOpt = 0;
-	std::cout << "Quieres abrir para lectura o escritura? 0-1" << std::endl;
-	std::cin >> iOpt;
+	FileManager* manager = new FileManager();
 
-	if (iOpt == 0)
-	{
-		mOpenFile(ptrName, iOpt);
-	}
-	else if (iOpt == 1)
-	{
-		mOpenFile(ptrName, iOpt);
-	}
-	else
-	{
-		std::cout << "ERROR" << std::endl;
-	}
+	const char* name{ "example.txt" };
+	int iOpt = 0;
+	std::cout << "What do you want doing? (write or read) 0 - 1" << std::endl;
+	std::cin >> iOpt;
 	
+	manager->mOpenFile(name, iOpt);
+
+	delete manager;
 	return 0;
 }

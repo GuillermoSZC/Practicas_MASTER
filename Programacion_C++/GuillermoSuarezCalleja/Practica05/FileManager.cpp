@@ -1,49 +1,50 @@
+// #pragma once
 #include "FileManager.h"
-#include<fstream>
-#include<iostream>
-using namespace std;
 
-void FileManager::mOpenFile(char _cName[], int _mode)
+void* FileManager::mOpenFile(const char* _cName, int _mode)
 {
-	fstream file;
-	char* name = _cName;
+	FILE* file = nullptr;
+	void* vFile_ = reinterpret_cast<void*>(file);
+
 	if (_mode == 0)
 	{
-		file.open(name, ios::in); // writte
-		if (file.is_open())
+		fopen_s(&file, _cName, "r");
+		printf("File opened to read.\n");
+		if (!file)
 		{
-			
+			printf("Error opening file.\n");
 		}
+		mCloseFile(file);
 	}
 	else if (_mode == 1)
 	{
-		file.open(_cName, ios::out); // read
-		if (file.is_open())
+		fopen_s(&file, _cName, "a");
+		printf("File opened to append.\n");
+		if (!file)
 		{
-			printf("Escribiendo..\n");
-			file << "Hello\n";
-			file << "Second line\n";
-			file.close();
+			printf("Error opening file.\n");
 		}
 	}
 	else
 	{
 
 	}
+	
+	return vFile_;
 }
 
-// void mReadFile(file* _ptrFile)
-// {
-// 	fstream* ptrFile = reinterpret_cast<fstream*>(&_ptrFile);
-// 	printf("READ FILE\n");
-// }
+void FileManager::mReadFile(FILE* _file)
+{
 
-// void* mWriteFile(fstream* _ptrFile)
-// {
-// 
-// }
+}
 
-// void mCloseFile(fstream* _file)
-// {
-// 	_file->close();
-// }
+char* FileManager::mWriteFile(FILE* _file, char* _buffer)
+{
+
+}
+
+void FileManager::mCloseFile(FILE* _file)
+{
+	fclose(_file);
+	printf("File closed.\n");
+}
