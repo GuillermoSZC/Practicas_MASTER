@@ -199,7 +199,7 @@ struct Exercise2 {
 		camYaw = fmodf(camYaw, 360);
 
 		// TODO: 
-		// camNode.rotation = quat_from_axis_deg(camYaw, camYaw, camPitch, camPitch) * PitchLimit;
+		// camNode.rotation = quat_from_axis_deg(30.f, 10.f, 10.f, 0.f) * 10.f;
 		
 		// TODO: use keys to modify cameraPosition here
 		if (glfwGetKey(window, GLFW_KEY_UP))

@@ -1,7 +1,7 @@
 #include<iostream>
 
 bool mCadena(const char*);
-const char* mReverseString(const char*);
+char* mReverseString(const char*);
 
 int main() 
 {
@@ -39,29 +39,15 @@ bool mCadena(const char* _indice)
 	return val;
 }
 
-const char* mReverseString(const char* _indice)
+char* mReverseString(const char* _indice)
 {
-	// std::cout << *(_indice + 0) << std::endl;
-	// std::cout << *(_indice + 1) << std::endl;
-	// std::cout << *(_indice + 2) << std::endl;
-	// std::cout << *(_indice + 3) << std::endl;
-	// std::cout << *(_indice + 4) << std::endl;
-	
 	int iSize = strlen(_indice);
-	char* aux = const_cast<char*>(_indice);
-	int i = 0;
-	int j = iSize;
+	char* indiceRev_ = new char[iSize + 1];
+	strcpy(indiceRev_, _indice);
 
-	while (*(_indice + i) != '\0')
+	for (int i = 0, j = iSize - 1; i < j; ++i, --j)
 	{
-		// std::cout << *(_indice + i) << std::endl;
-		// std::cout << *(_indice + j) << std::endl;
-		*aux = const_cast<const char*>(*(_indice + j));
-		++i;
-		--j;
+		std::swap(*(indiceRev_ + i), *(indiceRev_ +j));
 	}
-	// std::cout << aux << std::endl;
-	// std::cout << _indice << std::endl;
-
-	return aux;
+	return indiceRev_;
 }

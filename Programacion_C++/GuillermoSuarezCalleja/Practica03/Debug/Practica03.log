@@ -1,3 +1,2 @@
 ﻿  Practica03.cpp
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica03\Practica03.cpp(59,48): error C2440: 'const_cast': cannot convert from 'const char' to 'const char *'
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica03\Practica03.cpp(59,10): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+  Practica03.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Debug\Practica03.exe
