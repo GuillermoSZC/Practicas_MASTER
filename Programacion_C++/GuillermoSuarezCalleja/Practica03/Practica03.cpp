@@ -27,11 +27,9 @@ bool mCadena(const char* _indice)
 
 	for (int i = 0; i < sizeArray; ++i)
 	{
-		
-		// std::cout << *(ptrTabla + i) << std::endl;
-		if (*(sTabla + i) == _indice) // si la posicion i de la tabla es == al parametro de mCadena..
+		if (*(sTabla + i) == _indice)
 		{
-			std::cout << "Reversed " << *(sTabla + i) << " on: " << mReverseString(_indice) << std::endl;
+			std::cout << "Reversed " << *(sTabla + i) << " on: " << mReverseString(*(sTabla + i)) << std::endl;
 			val = true;
 		} 
 	}
@@ -42,12 +40,17 @@ bool mCadena(const char* _indice)
 char* mReverseString(const char* _indice)
 {
 	int iSize = strlen(_indice);
-	char* indiceRev_ = new char[iSize + 1];
-	strcpy(indiceRev_, _indice);
+	char* indiceRev_ = new char[iSize];
 
-	for (int i = 0, j = iSize - 1; i < j; ++i, --j)
+	indiceRev_[iSize] = '\0';
+
+	int i = 0, j = iSize - 1;
+
+	while (i < iSize)
 	{
-		std::swap(*(indiceRev_ + i), *(indiceRev_ +j));
+		*(indiceRev_ + i) = *(_indice + j);
+		++i; --j;
 	}
+
 	return indiceRev_;
 }
