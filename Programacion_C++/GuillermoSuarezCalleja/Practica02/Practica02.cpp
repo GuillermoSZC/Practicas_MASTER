@@ -10,7 +10,6 @@ void Parte4();
 
 int main() 
 {
-	
 	Parte1();
 	Parte2();
 	Parte3();
@@ -32,10 +31,12 @@ void Parte1()
 
 void Parte2() // REVISAR!
 {
-	unsigned int iTabla[] = { 1,3,2,5,3, 0xFFFFFFFF,2 };
-	unsigned int* pTabla = reinterpret_cast<unsigned int*>(iTabla);
-	unsigned int aux = 0;
-	for (int i = 0; i < sizeof(iTabla); ++i) 
+	int iTabla[] = { 1,3,2,5,3, static_cast<int>(0xFFFFFFFF),2 };
+	int* pTabla = reinterpret_cast<int*>(iTabla);
+	int aux = INT_MIN;
+	int iSize = sizeof(iTabla) / sizeof(iTabla[4]);
+
+	for (int i = 0; i < iSize; ++i) 
 	{
 		// printf("%s", "ptr: ");
 		// printf("%d\n", *(pTabla+i));

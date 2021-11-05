@@ -5,7 +5,7 @@
 #define MASK_3_BYTE 0xFF00FFFF
 #define MASK_4_BYTE 0x0000000F
 #define MASK_5_BYTE 0x00000001
-#define MASK_6_BYTE 0xFFFFFFF14 // PREGUNTAR [14?]
+#define MASK_6_BYTE 0xFFFFFFFE // PREGUNTAR [14?]
 
 // Prototipos de Funciones
 int GetBalas(unsigned int);

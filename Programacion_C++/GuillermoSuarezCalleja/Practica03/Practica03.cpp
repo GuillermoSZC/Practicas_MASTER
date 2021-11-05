@@ -1,11 +1,11 @@
 #include<iostream>
 
 bool mCadena(const char*);
-char* mReverseString(const char*);
+void mReverseString(const char*, char*& ret_);
 
 int main() 
 {
-	const char* indice("Hello");
+	char indice[] = "Hello";
 
 	if (mCadena(indice))
 	{
@@ -27,9 +27,13 @@ bool mCadena(const char* _indice)
 
 	for (int i = 0; i < sizeArray; ++i)
 	{
-		if (*(sTabla + i) == _indice)
+		if (strcmp(*(sTabla + i), _indice) == 0)
 		{
-			std::cout << "Reversed " << *(sTabla + i) << " on: " << mReverseString(*(sTabla + i)) << std::endl;
+			char* asd(nullptr);
+			mReverseString(*(sTabla + i), asd);
+			std::cout << "Reversed " << *(sTabla + i) << " on: " << asd << std::endl;
+			delete asd;
+			asd = nullptr;
 			val = true;
 		} 
 	}
@@ -37,20 +41,18 @@ bool mCadena(const char* _indice)
 	return val;
 }
 
-char* mReverseString(const char* _indice)
+void mReverseString(const char* _indice, char*& ret_)
 {
 	int iSize = strlen(_indice);
-	char* indiceRev_ = new char[iSize];
+	ret_ = new char[iSize + 1];
 
-	indiceRev_[iSize] = '\0';
+	ret_[iSize] = '\0';
 
 	int i = 0, j = iSize - 1;
-
+	
 	while (i < iSize)
 	{
-		*(indiceRev_ + i) = *(_indice + j);
+		*(ret_ + i) = *(_indice + j);
 		++i; --j;
 	}
-
-	return indiceRev_;
 }
