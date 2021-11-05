@@ -29,7 +29,7 @@ void Parte1()
 	printf("%02hhX\n", *(pChar));
 }
 
-void Parte2() // REVISAR!
+void Parte2()
 {
 	int iTabla[] = { 1,3,2,5,3, static_cast<int>(0xFFFFFFFF),2 };
 	int* pTabla = reinterpret_cast<int*>(iTabla);
@@ -57,7 +57,7 @@ void Parte3()
 	unsigned int iTabla[] = { 1,3,2,5,3,0xFFFFFFFF,2 };
 	unsigned char* pTabla = reinterpret_cast<unsigned char*>(iTabla);
 	char aux = ' ';
-	int tam = sizeof(iTabla)/4;
+	int tam = sizeof(iTabla) / sizeof(iTabla[4]);
 
 	for (int i = 0; i < tam; ++i) 
 	{ 

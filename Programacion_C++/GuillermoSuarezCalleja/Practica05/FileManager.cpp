@@ -1,47 +1,54 @@
 // #pragma once
 #include "FileManager.h"
 
-void* FileManager::mOpenFile(const char* _cName, int _mode)
+void* FileManager::mOpenFile(FILE*_file, const char* _cName, int _mode)
 {
-	FILE* file = nullptr;
-	void* vFile_ = reinterpret_cast<void*>(file);
+	void* vFile_ = reinterpret_cast<void*>(_file);
 
 	if (_mode == 0)
 	{
-		fopen_s(&file, _cName, "r");
+		fopen_s(&_file, _cName, "r");
 		printf("File opened to read.\n");
-		if (!file)
+		if (!_file)
 		{
 			printf("Error opening file.\n");
 		}
-		mCloseFile(file);
 	}
 	else if (_mode == 1)
 	{
-		fopen_s(&file, _cName, "a");
+		fopen_s(&_file, _cName, "a");
 		printf("File opened to append.\n");
-		if (!file)
+		if (!_file)
 		{
 			printf("Error opening file.\n");
 		}
-	}
-	else
-	{
-
 	}
 	
 	return vFile_;
 }
 
-void FileManager::mReadFile(FILE* _file)
+int FileManager::mReadFile(FILE* _file, char*& buffer)
 {
-
+	int suma(0), num(0);
+	size_t resultado;
+	while (!feof(_file)) 
+	{
+		resultado = fread(&num, sizeof(int), 1, _file);
+		if (resultado != 1)
+		{
+			break;
+		}
+		suma += num;
+	}
+	return suma;
 }
+/*
 
 char* FileManager::mWriteFile(FILE* _file, char* _buffer)
 {
 
 }
+*/
 
 void FileManager::mCloseFile(FILE* _file)
 {
