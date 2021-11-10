@@ -1,12 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
+#pragma once
 
-class FileManager
-{
-	public:
-	FileManager() = default;
-	void* mOpenFile(FILE*, const char*, int);
-	int mReadFile(FILE*, char*&);
-	// char* mWriteFile(FILE*, char*);
-	void mCloseFile(FILE*);
-};
+void* mOpenFile(const char*, const char*);
+unsigned int mReadFile(void*, char*);
+const char* mWriteFile(void*, const char*, unsigned int);
+void mCloseFile(void*);

@@ -1,3 +1,4 @@
 C:\Users\guillermo.suarez\Desktop\practicasMat\exercise1handout\Debug\Exercise1.exe
 C:\Users\guillermo.suarez\Documents\Practicas\practicasMat\exercise1handout\Debug\Exercise1.exe
 C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\Debug\Exercise1.exe
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Matematicas\exercise1handout\Debug\Exercise1.exe

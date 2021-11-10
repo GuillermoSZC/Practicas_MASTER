@@ -140,7 +140,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Practica05.cpp" />
   </ItemGroup>
   <ItemGroup>

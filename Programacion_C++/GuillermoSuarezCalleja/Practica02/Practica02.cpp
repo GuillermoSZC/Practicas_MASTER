@@ -31,12 +31,12 @@ void Parte1()
 
 void Parte2()
 {
-	int iTabla[] = { 1,3,2,5,3, static_cast<int>(0xFFFFFFFF),2 };
-	int* pTabla = reinterpret_cast<int*>(iTabla);
-	int aux = INT_MIN;
-	int iSize = sizeof(iTabla) / sizeof(iTabla[4]);
+	unsigned int iTabla[] = { 1,3,2,5,3, static_cast<unsigned int>(0xFFFFFFFF),2 };
+	unsigned int* pTabla = reinterpret_cast<unsigned int*>(iTabla);
+	unsigned int aux = 0;
+	unsigned int iSize = sizeof(iTabla) / sizeof(iTabla[4]);
 
-	for (int i = 0; i < iSize; ++i) 
+	for (unsigned int i = 0; i < iSize; ++i) 
 	{
 		// printf("%s", "ptr: ");
 		// printf("%d\n", *(pTabla+i));
@@ -77,13 +77,11 @@ void Parte4()
 	const int iTam = sizeof(cCadena);
 	std::vector<char> vCadena(iTam);
 
-	// printf("%d\n", vCadena.size());
 	for (int x = 0, y = iTam - 1; x < iTam - 1; ++x, --y)
 	{
 		vCadena[y] = *(ptr + x);
 		// std::cout << vCadena[y] << " , " << cCadena[x] << std::endl;
 	}
-  // std::cout << vCadena.size() << std::endl;
 
 	printf("%s", "Cadena invertida: ");
 	for (int i = 0; i < sizeof(cCadena); ++i)

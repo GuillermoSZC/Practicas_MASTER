@@ -40,10 +40,10 @@ void  Node::updateLocal()
 
 	// todo: given all above, create Sinv, Rinv and Tinv such that
 	mat4 Tinv = translate(identity_mat4(), position * -1.f);
-	mat4 Rinv = quat_to_mat4(rotation * -1.f);
-	mat4 Sinv = scaler(identity_mat4(), scale * -1.f);
+	// mat4 Rinv = quat_to_mat4(rotation);
+	mat4 Sinv = scaler(identity_mat4(), scale);
 
-	localInverseMatrix = Sinv*Rinv*Tinv;
+	localInverseMatrix = Sinv * transpose(R) * Tinv;
 }
 
 void  Node::updateHierarchy()

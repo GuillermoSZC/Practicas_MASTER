@@ -29,11 +29,13 @@ bool mCadena(const char* _indice)
 	{
 		if (strcmp(*(sTabla + i), _indice) == 0)
 		{
-			char* asd(nullptr);
-			mReverseString(*(sTabla + i), asd);
-			std::cout << "Reversed " << *(sTabla + i) << " on: " << asd << std::endl;
-			delete asd;
-			asd = nullptr;
+			char* auxRev(nullptr);
+			mReverseString(*(sTabla + i), auxRev);
+
+			std::cout << "Reversed " << *(sTabla + i) << " on: " << auxRev << std::endl;
+			delete auxRev;
+			auxRev = nullptr;
+
 			val = true;
 		} 
 	}

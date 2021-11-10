@@ -1,5 +1,2 @@
-﻿  FileManager.cpp
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica05\FileManager.cpp(30,47): error C2220: the following warning is treated as an error
-C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica05\FileManager.cpp(30,47): warning C4100: 'buffer': unreferenced formal parameter
-  Practica05.cpp
-  Generating Code...
+﻿  Practica05.cpp
+  Practica05.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Debug\Practica05.exe

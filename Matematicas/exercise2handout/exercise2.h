@@ -199,16 +199,16 @@ struct Exercise2 {
 		camYaw = fmodf(camYaw, 360);
 
 		// TODO: 
-		// camNode.rotation = quat_from_axis_deg(30.f, 10.f, 10.f, 0.f) * 10.f;
+		camNode.rotation = quat_from_axis_deg(camPitch, 1.f, 0.f, 0.f) * quat_from_axis_deg(camYaw, 0.f, 1.f, 0.f);
 		
 		// TODO: use keys to modify cameraPosition here
 		if (glfwGetKey(window, GLFW_KEY_UP))
 		{
-			cameraPosition.z += 1.f;
+			cameraPosition.z -= 1.f;
 		}
 		else if (glfwGetKey(window, GLFW_KEY_DOWN))
 		{
-			cameraPosition.z -= 1.f;
+			cameraPosition.z += 1.f;
 		}
 		camNode.position = cameraPosition;
 
@@ -225,9 +225,9 @@ struct Exercise2 {
 		glUseProgram(mesh_shader_index);
 
 		camera.get_shader_uniforms(mesh_shader_index);
-		camera.set_shader_uniforms(mesh_shader_index, cameraMatrix );
+		camera.set_shader_uniforms(mesh_shader_index, camNode.localInverseMatrix);
 		// TODO: 
-		camera.set_shader_uniforms(lines_shader_index, cameraMatrix);
+		camera.set_shader_uniforms(lines_shader_index, camNode.localInverseMatrix);
 		
 
 		meshGroup.set_shader_uniforms(mesh_shader_index,  ambientColor);
@@ -238,19 +238,19 @@ struct Exercise2 {
 		glUseProgram(lines_shader_index);
 
 		camera.get_shader_uniforms(lines_shader_index);
-		camera.set_shader_uniforms(mesh_shader_index, cameraMatrix );
+		camera.set_shader_uniforms(mesh_shader_index, camNode.localInverseMatrix);
 		// TODO: 
-		camera.set_shader_uniforms(lines_shader_index, cameraMatrix);
+		camera.set_shader_uniforms(lines_shader_index, camNode.localInverseMatrix);
 
 		grid.get_shader_uniforms(lines_shader_index);
 		//TODO: 
-		grid.set_shader_uniforms(lines_shader_index, gridMatrix);
+		grid.set_shader_uniforms(lines_shader_index, sceneRoot.worldInverseMatrix);
 
-		grid.set_shader_uniforms(lines_shader_index, gridMatrix);
+		grid.set_shader_uniforms(lines_shader_index, sceneRoot.worldInverseMatrix);
 		grid.render(lines_shader_index);
 
 		axis.get_shader_uniforms(lines_shader_index);
-		axis.set_shader_uniforms(lines_shader_index, sceneRoot.worldMatrix);
+		axis.set_shader_uniforms(lines_shader_index, sceneRoot.worldInverseMatrix);
 
 		axis.render(lines_shader_index);
 

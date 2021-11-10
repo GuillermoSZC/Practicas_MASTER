@@ -1,1 +1,1 @@
-fopen example, con FILE fclose, fwrite, fread, fopen面面面面面面
+1
