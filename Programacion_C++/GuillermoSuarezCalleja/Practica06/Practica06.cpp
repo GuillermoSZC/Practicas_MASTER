@@ -57,38 +57,7 @@ void* mOpenFile(const char* _cName, const char* _cMode)
 	return file;
 }
 
-unsigned int mNumOfStrings(void* _vFile, char* _cadena, char*& _cAux)
-{
-	FILE* file(reinterpret_cast<FILE*>(_vFile));
 
-	char* buffer;
-	unsigned int uiNumChars(0);
-	unsigned int uiNum(0);
-	unsigned int iSuma(0);
-
-	fseek(file, 0, SEEK_END);
-	uiNum = ftell(file) + 1;
-	rewind(file);
-
-	buffer = new char[uiNum];
-	_cAux = buffer;
-
-	uiNumChars = fread(buffer, 1, uiNum, file);
-	*(buffer + uiNumChars) = '\0';
-
-	for (int i = 0; i < uiNum; ++i)
-	{
-		if (*(buffer + i) == ' ' )
-		{
-			std::cout << *(buffer + i) << std::endl;
-			++iSuma;
-		}		
-	}
-
-	mCloseFile(_vFile);
-
-	return iSuma;
-}
 
 unsigned int mReadFile(void* _vFile, char* _cBuffer, char*& _cAux)
 {
@@ -105,9 +74,9 @@ unsigned int mReadFile(void* _vFile, char* _cBuffer, char*& _cAux)
 	_cAux = _cBuffer;
 
 	uiNumChars = fread(_cBuffer, 1, uiNum - 1, file);
-	// *(_cBuffer + uiNumChars) = '\0'; 
+	*(_cBuffer + uiNumChars) = '\0'; 
 
-	// std::cout << "Buffer read: " << _cAux << std::endl;
+	//std::cout << "Buffer read: " << _cAux << std::endl;
 
 	mCloseFile(_vFile);
 
@@ -122,6 +91,84 @@ const char* mWriteFile(void* _vFile, const char* _cBuffer, unsigned int _uiSize)
 	mCloseFile(_vFile);
 
 	return _cBuffer;
+}
+
+unsigned int mNumOfStrings(void* _vFile, char* _cadena, char*& _cAux)
+{
+	FILE* file(reinterpret_cast<FILE*>(_vFile));
+
+	char* buffer;
+	unsigned int uiNumChars(0);
+	unsigned int uiNum(0);
+	unsigned int iSuma(0);
+	unsigned int iAux(0);
+	unsigned int iSizeCad = strlen(_cadena);
+	bool val = true;
+
+	fseek(file, 0, SEEK_END);
+	uiNum = ftell(file) + 1;
+	rewind(file);
+
+	buffer = new char[uiNum];
+	_cAux = buffer;
+
+	uiNumChars = fread(buffer, 1, uiNum, file);
+	*(buffer + uiNumChars) = '\0';
+
+	for (int i = 0; *(buffer + i) != '\0'; ++i)
+	{
+		if (*(buffer + i) != ' ' && *(buffer + i) != '\n')
+		{
+			if (*(buffer + i) == *(_cadena + iAux))
+			{
+				++iAux;
+				if (iAux == iSizeCad)
+				{
+					if (
+						(*(buffer + i + 1) == ' ' || *(buffer + i + 1) == ','
+							|| *(buffer + i + 1) == '.' || *(buffer + i + 1) == '\n'
+							|| *(buffer + i + 1) == '\0')
+						&&
+						(*(buffer + i - iSizeCad) == ' '
+							|| *(buffer + i - iSizeCad) == ',' || *(buffer + i - iSizeCad) == '.'
+							|| *(buffer + i - iSizeCad) == '\n'))
+					{
+						++iSuma;
+						iAux = 0;
+						// 							std::cout << "principio 1: " << *(buffer + i - iSizeCad) << std::endl;
+						// 							std::cout << "posicion: " << i << std::endl;
+					}
+					else
+					{
+						iAux = 0;
+					}
+				}
+			}
+		}
+	}
+
+	for (unsigned int i = 0; i < iSizeCad; ++i)
+	{
+		if (*(buffer + i) != *(_cadena + i))
+		{
+			val = false;
+		}
+	}
+	// std::cout << "FINAL: '" << *(buffer + iSizeCad) << "'" << std::endl;
+	if (*(buffer + iSizeCad) != ' ' && *(buffer + iSizeCad) != ','
+		&& *(buffer + iSizeCad) != '.')
+	{
+		val = false;
+	}
+
+	if (val)
+	{
+		++iSuma;
+	}
+
+	mCloseFile(_vFile);
+
+	return iSuma;
 }
 
 void mCloseFile(void* _vFile)
