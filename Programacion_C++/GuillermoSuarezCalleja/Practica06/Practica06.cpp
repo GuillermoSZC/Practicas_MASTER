@@ -1,28 +1,28 @@
 #include <iostream>
 #include "FileManager.h"
-
+#include <string>
 // PREGUNTAS
 
 int main()
 {
-	char cBuffer[100];
+	const char* cfNameSum("Practica6_Sum.txt");
+	const char* cfNameNums("Practica6_Num.txt");
 	char cText[]("Hello world, this is an example file..");
+	char cadena[]("Hello");
 	unsigned int iSize = sizeof(cText) / sizeof(cText[0]);
-	const char* cfName("Practica6.txt");
+	int iOpt(INT_MIN);
 	void* vFile(nullptr);
 	bool bVal(true);
-	int iOpt(INT_MIN);
-	char* cAux(nullptr);
-	char cadena[]("Hello");
 
 	do
 	{
 		std::cout << "What would you like to do?\n"
 			"0. Read\n"
 			"1. Write\n"
-			"2. Count Strings\n" << std::endl;
+			"2. Count Strings\n"
+			"3. Sum of file numbers\n" << std::endl;
 		std::cin >> iOpt;
-		if (iOpt == 0 || iOpt == 1 || iOpt == 2)
+		if (iOpt == 0 || iOpt == 1 || iOpt == 2 || iOpt == 3)
 		{
 			bVal = false;
 		}
@@ -31,19 +31,23 @@ int main()
 	switch (iOpt)
 	{
 	case 0:
-		vFile = mOpenFile(cfName, "r");
-		std::cout << "Number of characters read: " << mReadFile(vFile, cBuffer, cAux) << std::endl;
-		delete cAux;
-		cAux = nullptr;
+		vFile = mOpenFile(cfNameNums, "r");
+		std::cout << "Number of characters read: " << mReadFile(vFile) << std::endl;
 		break;
 	case 1:
-		vFile = mOpenFile(cfName, "w");
+		vFile = mOpenFile(cfNameNums, "w");
 		std::cout << "Characters that was written: " << mWriteFile(vFile, cText, iSize) << std::endl;
 		break;
 	case 2:
-		vFile = mOpenFile(cfName, "r");
-		std::cout << "Number of '" << cadena << "'  read: " << mNumOfStrings(vFile, cadena, cAux) << std::endl;
+		vFile = mOpenFile(cfNameNums, "r");
+		std::cout << "Number of '" << cadena << "'  read: " << mNumOfStrings(vFile, cadena) << std::endl;
 		break;
+	case 3:
+		vFile = mOpenFile(cfNameSum, "r");
+		std::cout << "Sum of file numbers: " << mSumaNumeros(vFile) << std::endl;
+		break;
+	default:
+		std::cout << "Error" << std::endl;
 	}
 
 	return 0;
@@ -57,27 +61,26 @@ void* mOpenFile(const char* _cName, const char* _cMode)
 	return file;
 }
 
-
-
-unsigned int mReadFile(void* _vFile, char* _cBuffer, char*& _cAux)
+unsigned int mReadFile(void* _vFile)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 
 	unsigned int uiNumChars(0);
 	unsigned int uiNum(0);
+	char* cBuffer;
 
 	fseek(file, 0, SEEK_END);
 	uiNum = ftell(file) + 1;
 	rewind(file);
 
-	_cBuffer = new char[uiNum];
-	_cAux = _cBuffer;
+	cBuffer = new char[uiNum];
 
-	uiNumChars = fread(_cBuffer, 1, uiNum - 1, file);
-	*(_cBuffer + uiNumChars) = '\0'; 
+	uiNumChars = fread(cBuffer, 1, uiNum - 1, file);
+	*(cBuffer + uiNumChars) = '\0'; 
 
 	//std::cout << "Buffer read: " << _cAux << std::endl;
-
+	delete[] cBuffer;
+	cBuffer = nullptr;
 	mCloseFile(_vFile);
 
 	return uiNumChars;
@@ -93,82 +96,125 @@ const char* mWriteFile(void* _vFile, const char* _cBuffer, unsigned int _uiSize)
 	return _cBuffer;
 }
 
-unsigned int mNumOfStrings(void* _vFile, char* _cadena, char*& _cAux)
+unsigned int mNumOfStrings(void* _vFile, char* _cadena)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 
-	char* buffer;
+	char* cBuffer;
 	unsigned int uiNumChars(0);
 	unsigned int uiNum(0);
-	unsigned int iSuma(0);
-	unsigned int iAux(0);
-	unsigned int iSizeCad = strlen(_cadena);
+	unsigned int uiSuma_(0);
+	unsigned int uiAux(0);
+	unsigned int uiSizeCad = strlen(_cadena);
 	bool val = true;
 
 	fseek(file, 0, SEEK_END);
 	uiNum = ftell(file) + 1;
 	rewind(file);
 
-	buffer = new char[uiNum];
-	_cAux = buffer;
+	cBuffer = new char[uiNum];
 
-	uiNumChars = fread(buffer, 1, uiNum, file);
-	*(buffer + uiNumChars) = '\0';
+	uiNumChars = fread(cBuffer, 1, uiNum, file);
+	*(cBuffer + uiNumChars) = '\0';
 
-	for (int i = 0; *(buffer + i) != '\0'; ++i)
+	for (int i = 0; *(cBuffer + i) != '\0'; ++i)
 	{
-		if (*(buffer + i) != ' ' && *(buffer + i) != '\n')
+		if (*(cBuffer + i) != ' ' && *(cBuffer + i) != '\n')
 		{
-			if (*(buffer + i) == *(_cadena + iAux))
+			if (*(cBuffer + i) == *(_cadena + uiAux))
 			{
-				++iAux;
-				if (iAux == iSizeCad)
+				++uiAux;
+				if (uiAux == uiSizeCad)
 				{
 					if (
-						(*(buffer + i + 1) == ' ' || *(buffer + i + 1) == ','
-							|| *(buffer + i + 1) == '.' || *(buffer + i + 1) == '\n'
-							|| *(buffer + i + 1) == '\0')
+						(*(cBuffer + i + 1) == ' ' || *(cBuffer + i + 1) == ','
+							|| *(cBuffer + i + 1) == '.' || *(cBuffer + i + 1) == '\n'
+							|| *(cBuffer + i + 1) == '\0')
 						&&
-						(*(buffer + i - iSizeCad) == ' '
-							|| *(buffer + i - iSizeCad) == ',' || *(buffer + i - iSizeCad) == '.'
-							|| *(buffer + i - iSizeCad) == '\n'))
+						(*(cBuffer + i - uiSizeCad) == ' '
+							|| *(cBuffer + i - uiSizeCad) == ',' || *(cBuffer + i - uiSizeCad) == '.'
+							|| *(cBuffer + i - uiSizeCad) == '\n'))
 					{
-						++iSuma;
-						iAux = 0;
+						++uiSuma_;
+						uiAux = 0;
 						// 							std::cout << "principio 1: " << *(buffer + i - iSizeCad) << std::endl;
 						// 							std::cout << "posicion: " << i << std::endl;
 					}
 					else
 					{
-						iAux = 0;
+						uiAux = 0;
 					}
 				}
 			}
 		}
 	}
 
-	for (unsigned int i = 0; i < iSizeCad; ++i)
+	for (unsigned int i = 0; i < uiSizeCad; ++i)
 	{
-		if (*(buffer + i) != *(_cadena + i))
+		if (*(cBuffer + i) != *(_cadena + i))
 		{
 			val = false;
 		}
 	}
 	// std::cout << "FINAL: '" << *(buffer + iSizeCad) << "'" << std::endl;
-	if (*(buffer + iSizeCad) != ' ' && *(buffer + iSizeCad) != ','
-		&& *(buffer + iSizeCad) != '.')
+	if (*(cBuffer + uiSizeCad) != ' ' && *(cBuffer + uiSizeCad) != ','
+		&& *(cBuffer + uiSizeCad) != '.')
 	{
 		val = false;
 	}
 
 	if (val)
 	{
-		++iSuma;
+		++uiSuma_;
 	}
 
+	delete[] cBuffer;
+	cBuffer = nullptr;
 	mCloseFile(_vFile);
 
-	return iSuma;
+	return uiSuma_;
+}
+
+unsigned int mSumaNumeros(void* _vFile)
+{
+	FILE* file(reinterpret_cast<FILE*>(_vFile));
+	unsigned int uiSum_(0);
+	unsigned int uiNum(0);
+	unsigned int uiNumChars(0);
+	char* cBuffer;
+	std::string sCad;
+
+	fseek(file, 0, SEEK_END);
+	uiNum = ftell(file) + 1;
+	rewind(file);
+
+	cBuffer = new char[uiNum];
+
+	uiNumChars = fread(cBuffer, 1, uiNum, file);
+	*(cBuffer + uiNumChars) = '\0';
+
+	// PROBAR A QUITAR TODAS LAS LETRAS
+
+	for (unsigned int i = 0; i < uiNumChars + 2; ++i)
+	{
+		
+		if ((*(cBuffer + i) != ',' && *(cBuffer + i) != ' ' && *(cBuffer + i) != '\0' && *(cBuffer + i) != '\n'))
+		{
+			sCad += *(cBuffer + i);
+			std::cout << sCad << std::endl;
+		}
+		else
+		{
+			uiSum_ += stoi(sCad);
+			sCad = "";
+		}
+	}
+
+	delete[] cBuffer;
+	cBuffer = nullptr;
+	mCloseFile(_vFile);
+
+	return uiSum_;
 }
 
 void mCloseFile(void* _vFile)
