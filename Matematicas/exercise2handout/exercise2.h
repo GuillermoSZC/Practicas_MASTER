@@ -227,6 +227,7 @@ struct Exercise2 {
 		camera.get_shader_uniforms(mesh_shader_index);
 		camera.set_shader_uniforms(mesh_shader_index, camNode.localInverseMatrix);
 		// TODO: 
+		// Hay que usar '..InverseMatrix' porque sino dejan de verse las texturas
 		camera.set_shader_uniforms(lines_shader_index, camNode.localInverseMatrix);
 		
 
