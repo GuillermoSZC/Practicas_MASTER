@@ -5,8 +5,7 @@
 
 int main()
 {
-	const char* cfNameSum("Practica6_Sum.txt");
-	const char* cfNameNums("Practica6_Num.txt");
+	const char* cfName("Practica6.txt");
 	char cText[]("Hello world, this is an example file..");
 	char cadena[]("Hello");
 	unsigned int iSize = sizeof(cText) / sizeof(cText[0]);
@@ -17,7 +16,7 @@ int main()
 	do
 	{
 		std::cout << "What would you like to do?\n"
-			"0. Read\n"
+			"0. Read num chars\n"
 			"1. Write\n"
 			"2. Count Strings\n"
 			"3. Sum of file numbers\n" << std::endl;
@@ -31,20 +30,20 @@ int main()
 	switch (iOpt)
 	{
 	case 0:
-		vFile = mOpenFile(cfNameNums, "r");
-		std::cout << "Number of characters read: " << mReadFile(vFile) << std::endl;
+		vFile = FileManager::mOpenFile(cfName, "r");
+		std::cout << "Number of characters read: " << FileManager::mReadFile(vFile) << std::endl;
 		break;
 	case 1:
-		vFile = mOpenFile(cfNameNums, "w");
-		std::cout << "Characters that was written: " << mWriteFile(vFile, cText, iSize) << std::endl;
+		vFile = FileManager::mOpenFile(cfName, "w");
+		std::cout << "Characters that was written: " << FileManager::mWriteFile(vFile, cText, iSize) << std::endl;
 		break;
 	case 2:
-		vFile = mOpenFile(cfNameNums, "r");
-		std::cout << "Number of '" << cadena << "'  read: " << mNumOfStrings(vFile, cadena) << std::endl;
+		vFile = FileManager::mOpenFile(cfName, "r");
+		std::cout << "Number of '" << cadena << "'  read: " << FileManager::mNumOfStrings(vFile, cadena) << std::endl;
 		break;
 	case 3:
-		vFile = mOpenFile(cfNameSum, "r");
-		std::cout << "Sum of file numbers: " << mSumaNumeros(vFile) << std::endl;
+		vFile = FileManager::mOpenFile(cfName, "r");
+		std::cout << "Sum of file numbers: " << FileManager::mSumaNumeros(vFile) << std::endl;
 		break;
 	default:
 		std::cout << "Error" << std::endl;
@@ -53,7 +52,7 @@ int main()
 	return 0;
 }
 
-void* mOpenFile(const char* _cName, const char* _cMode)
+void* FileManager::mOpenFile(const char* _cName, const char* _cMode)
 {
 	FILE* file;
 	fopen_s(&file, _cName, _cMode);
@@ -61,7 +60,7 @@ void* mOpenFile(const char* _cName, const char* _cMode)
 	return file;
 }
 
-unsigned int mReadFile(void* _vFile)
+unsigned int FileManager::mReadFile(void* _vFile)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 
@@ -86,7 +85,7 @@ unsigned int mReadFile(void* _vFile)
 	return uiNumChars;
 }
 
-const char* mWriteFile(void* _vFile, const char* _cBuffer, unsigned int _uiSize)
+const char* FileManager::mWriteFile(void* _vFile, const char* _cBuffer, unsigned int _uiSize)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 	
@@ -96,7 +95,7 @@ const char* mWriteFile(void* _vFile, const char* _cBuffer, unsigned int _uiSize)
 	return _cBuffer;
 }
 
-unsigned int mNumOfStrings(void* _vFile, char* _cadena)
+unsigned int FileManager::mNumOfStrings(void* _vFile, char* _cadena)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 
@@ -175,7 +174,7 @@ unsigned int mNumOfStrings(void* _vFile, char* _cadena)
 	return uiSuma_;
 }
 
-unsigned int mSumaNumeros(void* _vFile)
+unsigned int FileManager::mSumaNumeros(void* _vFile)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 	unsigned int uiSum_(0);
@@ -183,6 +182,7 @@ unsigned int mSumaNumeros(void* _vFile)
 	unsigned int uiNumChars(0);
 	char* cBuffer;
 	std::string sCad;
+	bool bSemaph = false;
 
 	fseek(file, 0, SEEK_END);
 	uiNum = ftell(file) + 1;
@@ -193,20 +193,23 @@ unsigned int mSumaNumeros(void* _vFile)
 	uiNumChars = fread(cBuffer, 1, uiNum, file);
 	*(cBuffer + uiNumChars) = '\0';
 
-	// PROBAR A QUITAR TODAS LAS LETRAS
-
-	for (unsigned int i = 0; i < uiNumChars + 2; ++i)
+	for (unsigned int i = 0; i < uiNumChars + 1; ++i)
 	{
-		
-		if ((*(cBuffer + i) != ',' && *(cBuffer + i) != ' ' && *(cBuffer + i) != '\0' && *(cBuffer + i) != '\n'))
+		if ((*(cBuffer + i) >= 48 && *(cBuffer + i) <= 57)) // 48 en ASCII es 0 y 57 en ASCII es 9
 		{
+			bSemaph = true;
 			sCad += *(cBuffer + i);
-			std::cout << sCad << std::endl;
+			// std::cout << sCad << std::endl;
 		}
 		else
 		{
-			uiSum_ += stoi(sCad);
-			sCad = "";
+			if (bSemaph)
+			{
+				//std::cout << "else: '" << *(cBuffer + i) << "'" << std::endl;
+				uiSum_ += stoi(sCad);
+				sCad = "";
+				bSemaph = false;
+			}
 		}
 	}
 
@@ -217,7 +220,7 @@ unsigned int mSumaNumeros(void* _vFile)
 	return uiSum_;
 }
 
-void mCloseFile(void* _vFile)
+void FileManager::mCloseFile(void* _vFile)
 {
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
 	// std::cout << "File closed." << std::endl;
