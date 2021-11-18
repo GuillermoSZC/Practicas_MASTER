@@ -3,6 +3,7 @@
 #include <string>
 // PREGUNTAS
 
+/*
 int main()
 {
 	const char* cfName("Practica6.txt");
@@ -50,7 +51,7 @@ int main()
 	}
 
 	return 0;
-}
+}*/
 
 void* FileManager::mOpenFile(const char* _cName, const char* _cMode)
 {
@@ -218,54 +219,6 @@ unsigned int FileManager::mSumaNumeros(void* _vFile)
 	mCloseFile(_vFile);
 
 	return uiSum_;
-}
-
-unsigned int* mNumeros(void* _vFile)
-{
-	FILE* file(reinterpret_cast<FILE*>(_vFile));
-	unsigned int uiArray[30];
-	unsigned int uiNum(0);
-	unsigned int uiNumChars(0);
-	int aux(0);
-	char* cBuffer;
-	std::string sCad;
-	bool bSemaph = false;
-
-	fseek(file, 0, SEEK_END);
-	uiNum = ftell(file) + 1;
-	rewind(file);
-
-	cBuffer = new char[uiNum];
-
-	uiNumChars = fread(cBuffer, 1, uiNum, file);
-	*(cBuffer + uiNumChars) = '\0';
-
-	for (unsigned int i = 0; i < uiNumChars + 1; ++i)
-	{
-		if ((*(cBuffer + i) >= 48 && *(cBuffer + i) <= 57)) // 48 en ASCII es 0 y 57 en ASCII es 9
-		{
-			bSemaph = true;
-			sCad += *(cBuffer + i);
-			// std::cout << sCad << std::endl;
-		}
-		else
-		{
-			if (bSemaph)
-			{
-				//std::cout << "else: '" << *(cBuffer + i) << "'" << std::endl;
-				uiArray[aux] = stoi(sCad);
-				aux++;
-				sCad = "";
-				bSemaph = false;
-			}
-		}
-	}
-
-	delete[] cBuffer;
-	cBuffer = nullptr;
-	FileManager::mCloseFile(_vFile);
-
-	return uiArray;
 }
 
 void FileManager::mCloseFile(void* _vFile)

@@ -56,22 +56,48 @@ const char* TList::mPop(TList*& head)
 
 	return cString;
 }
-
-TList* mPushNumsOfFile(TList*& head, void* _vFile)
+//-------------------------------------------------------------------------------------------------------------------------------------
+//@TODO:
+TList* TList::mPushNumsOfFile(TList*& head)
 {
-	_vFile = FileManager::mOpenFile("FileManager.txt", "r");
-	unsigned int* uiArray = FileManager::mNumeros(_vFile);
-	TList* list = head;
-	unsigned int iSize = sizeof(uiArray);
+	void* _vFile = FileManager::mOpenFile("FileManager.txt", "r");
+	FILE* file(reinterpret_cast<FILE*>(_vFile));
+
+	unsigned int uiNumChars(0);
+	unsigned int uiNum(0);
+	char* cBuffer;
+
+	fseek(file, 0, SEEK_END);
+	uiNum = ftell(file) + 1;
+	rewind(file);
+
+	cBuffer = new char[uiNum];
+
+	uiNumChars = fread(cBuffer, 1, uiNum - 1, file);
+	*(cBuffer + uiNumChars) = '\0';
+
+	unsigned int uiSize = strlen(cBuffer);
+
+	for (unsigned int i = 0; i < uiSize; ++i)
+	{
+		if (*(cBuffer + i) != ' ')
+		{
+			std::cout << *(cBuffer + i);
+		}
+	}
+
+	/*TList* nNode = new TList();
+	TList* aux1 = nullptr;
+	TList* aux2 = nullptr;
+
+	std::cout << "Size Array: " << iSize << std::endl;
 
 	for (unsigned int i = 0; i < iSize; ++i)
 	{
-		const char* cad = reinterpret_cast<const char*>(uiArray[i]);
+		nNode->cData = ...;
 
-		list->cData = cad;
-
-		TList* aux1 = list;
-		TList* aux2 = nullptr;
+		aux1 = head;
+		aux2 = nullptr;
 
 		while ((aux1 != nullptr))
 		{
@@ -79,19 +105,22 @@ TList* mPushNumsOfFile(TList*& head, void* _vFile)
 			aux1 = aux1->next;
 		}
 
-		if (list == aux1)
+		if (head == aux1)
 		{
-			list = nNode;
+			head = nNode;
 		}
 		else
 		{
 			aux2->next = nNode;
 		}
 		nNode->next = aux1;
-		list->iSize++;
-	}
+		head->iSize++;
+	}*/
 
-	return list;
+	delete[] cBuffer;
+	cBuffer = nullptr;
+	FileManager::mCloseFile(_vFile);
+	return head;
 }
 
 void TList::mReset(TList*& head)

@@ -6,7 +6,7 @@ int main()
 {
 	TList* nodo = nullptr;
 
-	const char* dato;
+	/*const char* dato;
 	dato = "hello";
 	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
 
@@ -26,7 +26,8 @@ int main()
 
 	std::cout << "\n..Next element of list..\n" << nodo->mNext(nodo) << std::endl;
 
-	std::cout << "\n..First element of list erased..\n" << nodo->mPop(nodo) << std::endl;
+	std::cout << "\n..First element of list erased..\n" << nodo->mPop(nodo) << std::endl;*/
+	nodo = nodo->mPushNumsOfFile(nodo);
 
 	std::cout << "\n..Reset list..\n";
 	nodo->mReset(nodo);

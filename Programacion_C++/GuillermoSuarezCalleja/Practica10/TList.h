@@ -14,5 +14,5 @@ public:
 	const char* mNext(TList*&);
 	const char* mPop(TList*&);
 	void mReset(TList*&);
-	TList* mPushNumsOfFile(TList*&, void*);
+	TList* mPushNumsOfFile(TList*&);
 };

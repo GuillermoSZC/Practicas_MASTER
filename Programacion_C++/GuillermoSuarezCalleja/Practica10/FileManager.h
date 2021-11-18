@@ -7,6 +7,5 @@ namespace FileManager
 	const char* mWriteFile(void*, const char*, unsigned int);
 	unsigned int mNumOfStrings(void*, char*);
 	unsigned int mSumaNumeros(void*);
-	unsigned int* mNumeros(void*);
 	void mCloseFile(void*);
 }
