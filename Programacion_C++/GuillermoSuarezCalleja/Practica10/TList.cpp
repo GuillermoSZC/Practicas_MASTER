@@ -57,16 +57,18 @@ const char* TList::mPop(TList*& head)
 	return cString;
 }
 
-TList* mNumeros(void* _vFile)
+TList* mPushNumsOfFile(TList*& head, void* _vFile)
 {
 	_vFile = FileManager::mOpenFile("FileManager.txt", "r");
 	unsigned int* uiArray = FileManager::mNumeros(_vFile);
-	TList* list = new TList();
+	TList* list = head;
 	unsigned int iSize = sizeof(uiArray);
 
 	for (unsigned int i = 0; i < iSize; ++i)
 	{
-		list->cData = uiArray[i];
+		const char* cad = reinterpret_cast<const char*>(uiArray[i]);
+
+		list->cData = cad;
 
 		TList* aux1 = list;
 		TList* aux2 = nullptr;

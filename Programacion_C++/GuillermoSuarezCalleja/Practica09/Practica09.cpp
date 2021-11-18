@@ -25,7 +25,9 @@ int main()
 
 	std::cout << "\n..Next element of list..\n" << nodo->mNext(nodo) << std::endl;
 
-	std::cout << "\n..First element of list erased..\n" << nodo->mPop(nodo) << std::endl;
+	// std::cout << "\n..First element of list erased..\n" << nodo->mPop(nodo) << std::endl;
+
+	std::cout << "\n..First element of list..\n" << nodo->mFirst(nodo) << std::endl;
 
 	std::cout << "\n..Reset list..\n";
 	nodo->mReset(nodo);

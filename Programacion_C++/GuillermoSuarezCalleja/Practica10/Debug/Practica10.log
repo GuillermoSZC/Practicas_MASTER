@@ -1,0 +1,20 @@
+﻿  FileManager.cpp
+  Practica10.cpp
+  TList.cpp
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(69,7): error C2248: 'TList::cData': cannot access private member declared in class 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(6): message : see declaration of 'TList::cData'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(3): message : see declaration of 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(77,15): error C2248: 'TList::next': cannot access private member declared in class 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(8): message : see declaration of 'TList::next'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(3): message : see declaration of 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(82,11): error C2065: 'nNode': undeclared identifier
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(86,8): error C2248: 'TList::next': cannot access private member declared in class 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(8): message : see declaration of 'TList::next'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(3): message : see declaration of 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(86,17): error C2065: 'nNode': undeclared identifier
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(88,3): error C2065: 'nNode': undeclared identifier
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.cpp(89,7): error C2248: 'TList::iSize': cannot access private member declared in class 'TList'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(7): message : see declaration of 'TList::iSize'
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\TList.h(3): message : see declaration of 'TList'
+  Generating Code...
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica10\FileManager.cpp(268): warning C4172: returning address of local variable or temporary: uiArray
