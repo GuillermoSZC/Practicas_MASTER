@@ -3,16 +3,41 @@
 class  TList
 {
 private:
-	const char* cData = nullptr;
-	int iSize = 0;
-	TList* next = nullptr;
-public:
-	TList() {};
+	struct Nodo
+	{
+		const char* cData;
+		int id;
+		Nodo* next;
+		Nodo* prev;
 
-	int mPush(TList*&, const char*);
-	const char* mFirst(TList*&);
-	const char* mNext(TList*&);
-	const char* mPop(TList*&);
-	void mReset(TList*&);
-	TList* mPushNumsOfFile(TList*&);
+		Nodo() = default;
+		Nodo(const char* value)
+		{
+			id = 0;
+			cData = value;
+			next = nullptr;
+			prev = nullptr;
+		}
+	}/**head, *tail*/;
+	
+	int iSize;
+	TList::Nodo* head;
+	TList::Nodo* tail;
+
+public:
+	TList()
+	{
+		iSize = 0;
+		head = nullptr;
+		tail = nullptr;
+	};
+
+	int mSize();
+	int mPush(const char*);
+	const char* mFirst();
+	const char* mNext();
+	const char* mPop();
+	TList* mPushNumsOfFile(const char*, char*&);
+	void mShowList();
+	void mReset();
 };

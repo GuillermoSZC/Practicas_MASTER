@@ -1,71 +1,90 @@
 #include"TList.h"
 #include"FileManager.h"
 #include<iostream>
+#include<string>
 
-int TList::mPush(TList*& list, const char* cValue)
+int TList::mPush(const char* cValue)
 {
-	TList* nNode = new TList();
-	nNode->cData = cValue;
+	TList::Nodo* nNode = new TList::Nodo(cValue);
 
-	TList* aux1 = list;
-	TList* aux2 = nullptr;
+	nNode->next = nullptr;
+	nNode->prev = tail;
 
-	while ((aux1 != nullptr))
+	if (!head)
 	{
-		aux2 = aux1;
-		aux1 = aux1->next;
-	}
-
-	if (list == aux1)
-	{
-		list = nNode;
+		head = nNode;
 	}
 	else
 	{
-		aux2->next = nNode;
+		tail->next = nNode;
 	}
-	nNode->next = aux1;
-	list->iSize++;
+	tail = nNode;
 
-	return list->iSize;
+	nNode->id = iSize;
+
+	++iSize;
+	return head->id;
 }
 
-const char* TList::mFirst(TList*& head)
+int TList::mSize()
+{
+	return iSize;
+}
+
+const char* TList::mFirst()
 {
 	return head->cData;
 }
 
-const char* TList::mNext(TList*& head)
+const char* TList::mNext()
 {
-	TList* tmp = head;
+	TList::Nodo* tmp = head;
 	tmp = head->next;
 
 	return tmp->cData;
 }
 
-const char* TList::mPop(TList*& head)
+const char* TList::mPop()
 {
 	const char* cString = nullptr;
 	if (head)
 	{
 		cString = head->cData;
-		TList* temp = head;
+		--iSize;
+		TList::Nodo* temp = head;
 		head = head->next;
 		delete temp;
 	}
 
 	return cString;
 }
-//-------------------------------------------------------------------------------------------------------------------------------------
-//@TODO:
-TList* TList::mPushNumsOfFile(TList*& head)
+
+void TList::mShowList()
 {
-	void* _vFile = FileManager::mOpenFile("FileManager.txt", "r");
+	TList aux;
+	aux.head = head;
+
+	while (aux.head != NULL)
+	{
+		std::cout << "Element " << aux.head->id << ": " << aux.head->cData << std::endl;
+		aux.head = aux.head->next;
+	}
+}
+
+TList* TList::mPushNumsOfFile(const char* _cName, char *& _aux)
+{
+	void* _vFile = FileManager::mOpenFile(_cName, "r");
 	FILE* file(reinterpret_cast<FILE*>(_vFile));
+
+	TList* node = new TList();
 
 	unsigned int uiNumChars(0);
 	unsigned int uiNum(0);
+	unsigned int uiValComma(1);
 	char* cBuffer;
+	unsigned int uiSize(0);
+	std::string sCad = "";
+	bool bSemaph = false;
 
 	fseek(file, 0, SEEK_END);
 	uiNum = ftell(file) + 1;
@@ -76,60 +95,60 @@ TList* TList::mPushNumsOfFile(TList*& head)
 	uiNumChars = fread(cBuffer, 1, uiNum - 1, file);
 	*(cBuffer + uiNumChars) = '\0';
 
-	unsigned int uiSize = strlen(cBuffer);
+	// unsigned int uiSize = strlen(cBuffer);
 
-	for (unsigned int i = 0; i < uiSize; ++i)
+	for (unsigned int i = 0; i < uiNumChars + 1; ++i)
 	{
-		if (*(cBuffer + i) != ' ')
+		if ((*(cBuffer + i) >= 48 && *(cBuffer + i) <= 57)) // Numeros del 0 al 9 en ASCII
 		{
-			std::cout << *(cBuffer + i);
-		}
-	}
-
-	/*TList* nNode = new TList();
-	TList* aux1 = nullptr;
-	TList* aux2 = nullptr;
-
-	std::cout << "Size Array: " << iSize << std::endl;
-
-	for (unsigned int i = 0; i < iSize; ++i)
-	{
-		nNode->cData = ...;
-
-		aux1 = head;
-		aux2 = nullptr;
-
-		while ((aux1 != nullptr))
-		{
-			aux2 = aux1;
-			aux1 = aux1->next;
-		}
-
-		if (head == aux1)
-		{
-			head = nNode;
+			bSemaph = true;
+			sCad += *(cBuffer + i);
+			uiValComma++;
 		}
 		else
 		{
-			aux2->next = nNode;
-		}
-		nNode->next = aux1;
-		head->iSize++;
-	}*/
+			if (bSemaph)
+			{
+				if (*(cBuffer + i - uiValComma) == ',' || *(cBuffer + i) == ',')
+				{
+					uiSize = strlen(sCad.c_str());
+					_aux = new char[uiSize + 1];
+					*(_aux + uiSize) = '\0';
+					
+					for (unsigned int j = 0; j < uiSize; ++j)
+					{
+						*(_aux + j) = sCad[j];
+					}
+
+					// std::cout << _aux << std::endl;
+					node->mPush(_aux);
+
+					sCad = "";
+					uiValComma = 1;
+					bSemaph = false;
+				}
+				else
+				{
+					sCad = "";
+				}
+			}
+		}	
+	}
 
 	delete[] cBuffer;
 	cBuffer = nullptr;
 	FileManager::mCloseFile(_vFile);
-	return head;
+
+	return node;
 }
 
-void TList::mReset(TList*& head)
+void TList::mReset()
 {
-	TList* tmp = nullptr;
+	TList::Nodo* tmp = nullptr;
 	while (head)
 	{
 		tmp = head;
-		std::cout << "Element " << head->cData << " erased.\n";
+		std::cout << "Element " << head->id << ": " << head->cData << " erased.\n";
 		head = head->next;
 		delete tmp;
 	}

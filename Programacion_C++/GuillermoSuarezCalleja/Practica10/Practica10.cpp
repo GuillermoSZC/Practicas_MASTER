@@ -4,34 +4,22 @@
 
 int main()
 {
-	TList* nodo = nullptr;
+	TList* nodo = new TList();
+	char* aux = nullptr;
+	const char* cNameOfFile = "FileManager.txt";
 
-	/*const char* dato;
-	dato = "hello";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
+	nodo = nodo->mPushNumsOfFile(cNameOfFile, aux);
 
-	dato = "world";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "bye";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "asd";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "dfg";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-	
-	std::cout << "\n..First element of list..\n" << nodo->mFirst(nodo) << std::endl;
-
-	std::cout << "\n..Next element of list..\n" << nodo->mNext(nodo) << std::endl;
-
-	std::cout << "\n..First element of list erased..\n" << nodo->mPop(nodo) << std::endl;*/
-	nodo = nodo->mPushNumsOfFile(nodo);
+	std::cout << "\nList content:" << std::endl;
+	nodo->mShowList();
 
 	std::cout << "\n..Reset list..\n";
-	nodo->mReset(nodo);
+	nodo->mReset();
 
-	
+	delete aux;
+	aux = nullptr;
+	delete nodo;
+	nodo = nullptr;
+
 	return 0;
 }

@@ -3,35 +3,32 @@
 
 int main()
 {
-	TList* nodo = nullptr;
+	TList* nodo = new TList();
 
-	const char* dato;
-	dato = "hello";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "world";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "bye";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "asd";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
-
-	dato = "dfg";
-	std::cout << "Element added.\nList Size: " << nodo->mPush(nodo, dato) << std::endl;
+	nodo->mPush("hello");
+	nodo->mPush("bye");
+	nodo->mPush("123");
+	nodo->mPush("234");
+	nodo->mPush("456");
 	
-	std::cout << "\n..First element of list..\n" << nodo->mFirst(nodo) << std::endl;
+	nodo->mShowList();
 
-	std::cout << "\n..Next element of list..\n" << nodo->mNext(nodo) << std::endl;
+	std::cout << "\nSize of list: \n" << nodo->mSize() << std::endl;
 
-	// std::cout << "\n..First element of list erased..\n" << nodo->mPop(nodo) << std::endl;
+	std::cout << "\n..First element of list..\n" << nodo->mFirst() << std::endl;
 
-	std::cout << "\n..First element of list..\n" << nodo->mFirst(nodo) << std::endl;
+	std::cout << "\n..Next element of list..\n" << nodo->mNext() << std::endl;
+
+	std::cout << "\n..First element of list erased..\n" << nodo->mPop() << std::endl;
+
+	std::cout << "\nSize of list: \n" << nodo->mSize() << std::endl;
 
 	std::cout << "\n..Reset list..\n";
-	nodo->mReset(nodo);
+	nodo->mReset();
 
-	
+
+	delete nodo;
+	nodo = nullptr;
+
 	return 0;
 }

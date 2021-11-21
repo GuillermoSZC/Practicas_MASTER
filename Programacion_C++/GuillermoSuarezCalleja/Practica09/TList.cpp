@@ -1,54 +1,56 @@
 #include"TList.h"
 #include<iostream>
 
-int TList::mPush(TList*& list, const char* cValue)
+int TList::mPush(const char* cValue)
 {
-	TList* nNode = new TList();
-	nNode->cData = cValue;
+	TList::Nodo* nNode = new TList::Nodo(cValue);
 
-	TList* aux1 = list;
-	TList* aux2 = nullptr;
+	nNode->next = nullptr;
+	nNode->prev = tail;
 
-	while ((aux1 != nullptr))
+	if (!head)
 	{
-		aux2 = aux1;
-		aux1 = aux1->next;
-	}
-
-	if (list == aux1)
-	{
-		list = nNode;
+		head = nNode;
 	}
 	else
 	{
-		aux2->next = nNode;
+		tail->next = nNode;
 	}
-	nNode->next = aux1;
-	list->iSize++;
+	tail = nNode;
 
-	return list->iSize;
+	nNode->id = iSize;
+
+	++iSize;
+	return head->id;
 }
 
-const char* TList::mFirst(TList*& head)
+int TList::mSize()
+{
+	return iSize;
+}
+
+const char* TList::mFirst()
 {
 	return head->cData;
 }
 
-const char* TList::mNext(TList*& head)
+const char* TList::mNext()
 {
-	TList* tmp = head;
+	TList::Nodo* tmp = head;
 	tmp = head->next;
 
 	return tmp->cData;
 }
 
-const char* TList::mPop(TList*& head)
+const char* TList::mPop()
 {
 	const char* cString = nullptr;
 	if (head)
 	{
 		cString = head->cData;
-		TList* temp = head;
+		--iSize;
+		TList::Nodo* temp = head;
+		
 		head = head->next;
 		delete temp;
 	}
@@ -56,9 +58,21 @@ const char* TList::mPop(TList*& head)
 	return cString;
 }
 
-void TList::mReset(TList*& head)
+void TList::mShowList()
 {
-	TList* tmp = nullptr;
+	TList aux;
+	aux.head = head;
+
+	while (aux.head != NULL)
+	{
+		std::cout << "Element " << aux.head->id << ": " << aux.head->cData << std::endl;
+		aux.head = aux.head->next;
+	}
+}
+
+void TList::mReset()
+{
+	TList::Nodo* tmp = nullptr;
 	while (head)
 	{
 		tmp = head;
