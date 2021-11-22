@@ -1,59 +1,70 @@
-#include "Vec2.h"
+#include "vec2.h"
 #include <math.h>
 
-float* Vec2::suma(float a[2], float b[2])
+vec2::vec2() {}
+
+vec2::vec2(float x, float y)
 {
-	float suma[2];
-
-	for (int i = 0; i < 2; ++i)
-	{
-		suma[i] = a[i] + b[i];
-	}
-
-	return suma;
+	v[0] = x;
+	v[1] = y;
 }
 
-float* Vec2::resta(float a[2], float b[2])
+vec2 suma(vec2 a, vec2 b)
 {
-	float resta[2];
+	vec2 sum;
+	sum.v[0] = a.v[0] + b.v[0];
+	sum.v[1] = a.v[1] + b.v[1];
 
-	for (int i = 0; i < 2; ++i)
-	{
-		resta[i] = a[i] - b[i];
-	}
+	return sum;
+}
+vec2 resta(vec2 a, vec2 b)
+{
+	vec2 rest;
+	rest.v[0] = a.v[0] - b.v[0];
+	rest.v[1] = a.v[1] - b.v[1];
 
-	return resta;
+	return rest;
 }
 
-float* Vec2::producto(float a[2], float b[2])
+vec2 producto(vec2 a, vec2 b)
 {
-	float producto[2];
+	vec2 prod;
+	prod.v[0] = a.v[0] * b.v[0];
+	prod.v[1] = a.v[1] * b.v[1];
 
-	for (int i = 0; i < 2; ++i)
-	{
-		producto[i] = a[i] * b[i];
-	}
-
-	return producto;
+	return prod;
 }
 
-float* Vec2::division(float a[2], float b[2])
+vec2 division(vec2 a, vec2 b)
 {
-	float division[2];
+	vec2 div;
+	div.v[0] = a.v[0] / b.v[0];
+	div.v[1] = a.v[1] / b.v[1];
 
-	for (int i = 0; i < 2; ++i)
-	{
-		division[i] = a[i] / b[i];
-	}
-
-	return division;
+	return div;
 }
 
-float vAbsoluto(float a[2])
+float vAbsoluto(vec2 a)
 {
-	double vAbs;
-	
-	vAbs = sqrt(((double)a[0]* (double)a[0]) + ((double)a[1]* (double)a[1]));
+	float vAbs;
+	float prod = (float)pow(a.v[0], 2) + (float)pow(a.v[1], 2);
+	vAbs = (float)sqrt(prod);
 
-	return (float)vAbs;
+	return vAbs;
+}
+
+float normal(vec2 a)
+{
+	float nm = a.v[0] + a.v[1];
+	float n = (float)pow(a.v[0], 2) + (float)pow(a.v[1], 2);
+	nm = nm / (float)sqrt(n);
+
+	return nm;
+}
+
+float pEscalar(vec2 a, vec2 b)
+{
+	float escalar = a.v[0] * b.v[0] + a.v[1] * b.v[1];
+
+	return escalar;
 }

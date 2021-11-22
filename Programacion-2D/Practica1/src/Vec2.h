@@ -1,24 +1,25 @@
 #pragma once
 
-class Vec2 {
+class vec2 {
 public:
-	float vec1[2];
-	float vec2[2];
-
-	Vec2() = default;
-	Vec2(float fx[2], float fy[2])
+	vec2();
+	vec2(float x, float y);
+	union
 	{
-		for (int i = 0; i < 2; ++i)
+		float v[2];
+		struct
 		{
-			vec1[i] = fx[i];
-			vec2[i] = fy[i];
-		}
+			float x, y;
+		};
 	};
-
-	float* suma(float[2], float[2]);
-	float* resta(float[2], float[2]);
-	float* producto(float[2], float[2]);
-	float* division(float[2], float[2]);
-	float* vAbsoluto(float[2]);
-
 };
+
+vec2 suma(vec2, vec2);
+vec2 resta(vec2, vec2);
+vec2 producto(vec2, vec2);
+vec2 division(vec2, vec2);
+float vAbsoluto(vec2);
+float normal(vec2);
+float pEscalar(vec2, vec2);
+float angle(const vec2& other) const;
+float distance(const vec2& other) const;

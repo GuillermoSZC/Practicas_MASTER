@@ -18,7 +18,7 @@
     <ClCompile Include="..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Vec2.cpp">
+    <ClCompile Include="..\src\vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,7 +26,7 @@
     <ClInclude Include="..\lib\litegfx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Vec2.h">
+    <ClInclude Include="..\src\vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
