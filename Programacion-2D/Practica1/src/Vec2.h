@@ -19,7 +19,8 @@ vec2 resta(vec2, vec2);
 vec2 producto(vec2, vec2);
 vec2 division(vec2, vec2);
 float vAbsoluto(vec2);
-float normal(vec2);
+float normal(vec2); // @TODO: Tiene que devolver un vec2
 float pEscalar(vec2, vec2);
+
 float angle(const vec2& other) const;
 float distance(const vec2& other) const;
