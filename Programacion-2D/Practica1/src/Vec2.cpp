@@ -9,7 +9,7 @@ vec2::vec2(float x, float y)
 	v[1] = y;
 }
 
-vec2 suma(vec2 a, vec2 b)
+vec2 vec2::suma(vec2& a, vec2& b)
 {
 	vec2 sum;
 	sum.v[0] = a.v[0] + b.v[0];
@@ -17,7 +17,7 @@ vec2 suma(vec2 a, vec2 b)
 
 	return sum;
 }
-vec2 resta(vec2 a, vec2 b)
+vec2 vec2::resta(vec2& a, vec2& b)
 {
 	vec2 rest;
 	rest.v[0] = a.v[0] - b.v[0];
@@ -26,7 +26,7 @@ vec2 resta(vec2 a, vec2 b)
 	return rest;
 }
 
-vec2 producto(vec2 a, vec2 b)
+vec2 vec2::producto(vec2& a, vec2& b)
 {
 	vec2 prod;
 	prod.v[0] = a.v[0] * b.v[0];
@@ -35,7 +35,7 @@ vec2 producto(vec2 a, vec2 b)
 	return prod;
 }
 
-vec2 division(vec2 a, vec2 b)
+vec2 vec2::division(vec2& a, vec2& b)
 {
 	vec2 div;
 	div.v[0] = a.v[0] / b.v[0];
@@ -44,7 +44,7 @@ vec2 division(vec2 a, vec2 b)
 	return div;
 }
 
-float vAbsoluto(vec2 a)
+float vec2::vAbsoluto(vec2& a)
 {
 	float vAbs;
 	float prod = (float)pow(a.v[0], 2) + (float)pow(a.v[1], 2);
@@ -53,18 +53,34 @@ float vAbsoluto(vec2 a)
 	return vAbs;
 }
 
-float normal(vec2 a)
+vec2 vec2::normal(vec2& a)
 {
-	float nm = a.v[0] + a.v[1];
-	float n = (float)pow(a.v[0], 2) + (float)pow(a.v[1], 2);
-	nm = nm / (float)sqrt(n);
+	float nm = vAbsoluto(a);
+	if (nm == 0)
+	{
+		return vec2(0, 0);
+	}
 
-	return nm;
+	return vec2((a.x / nm), a.y /nm);
 }
 
-float pEscalar(vec2 a, vec2 b)
+float vec2::pEscalar(vec2& a, vec2& b)
 {
 	float escalar = a.v[0] * b.v[0] + a.v[1] * b.v[1];
 
 	return escalar;
+}
+
+float vec2::angle(const vec2& other) const 
+{
+	float x = 0.f;
+
+	return x;
+}
+
+float vec2::distance(const vec2& other) const
+{
+	float x = 0.f;
+
+	return x;
 }

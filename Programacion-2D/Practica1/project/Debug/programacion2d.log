@@ -1,2 +1,4 @@
 ﻿  main.cpp
-  programacion2d.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica1\project\Debug\programacion2d.exe
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica1\src\main.cpp(41,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica1\src\main.cpp(41,21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  programacion2d.vcxproj -> C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica1\project\Debug\programacion2d.exe

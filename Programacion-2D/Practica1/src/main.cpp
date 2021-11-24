@@ -6,28 +6,52 @@
 #include "vec2.h"
 
 int main() {
-  
+	double xpos, ypos;
+	int width = 1280, height = 960;
+	float lado = 50.f;
 
-	vec2 vecSuma = suma(vec2(1, 1), vec2(3, 4));
-  std::cout <<"Suma: vec2(" << vecSuma.x << "," << vecSuma.y << ")" << std::endl;
+	GLFWwindow* window;
+
+	glfwInit();
 	
-	vec2 vecResta = resta(vec2(5, 7), vec2(3, 5));
-	std::cout << "Resta: vec2(" << vecResta.x << "," << vecResta.y << ")" << std::endl;
-	
-	vec2 vecProducto = producto(vec2(2, 4), vec2(3, 4));
-	std::cout << "Producto: vec2(" << vecProducto.x << "," << vecProducto.y << ")" << std::endl;
 
-	vec2 vecDivision = division(vec2(20, 35), vec2(2, 7));
-	std::cout << "Division: vec2(" << vecDivision.x << "," << vecDivision.y << ")" << std::endl;
+	glfwGetTime();
 
-	float vecAbsoluto = vAbsoluto(vec2(3, 4));
-	std::cout << "Valor absoluto: " << vecAbsoluto << std::endl;
+	if (!glfwInit())
+	{
+		printf("error init");
+	}
 
-	float nm = normal(vec2(3, 3));
-	std::cout << "Normal: " << nm << std::endl;
+	window = glfwCreateWindow(width, height, "P1", NULL, NULL);
+	if (!window)
+	{
+		printf("error window");
+	}
 
-	float esc = pEscalar(vec2(3, 0), vec2(5, 5));
-	std::cout << "Producto escalar: " << esc << std::endl;
+	while (!glfwWindowShouldClose(window))
+	{
+		lgfx_setup2d(width, height);
+		lgfx_clearcolorbuffer(1.f, 1.f, 1.f);
+
+		lgfx_setcolor(0.3f, 0.7f, 0.85f, 1.f);
+		lgfx_drawrect((width / 2) - lado / 2, (height / 2) - lado / 2, lado, lado);
+		
+		glfwGetCursorPos(window, &xpos, &ypos);
+		lgfx_setcolor(0.3f, 0.7f, 0.85f, 1.f);
+		lgfx_drawrect(xpos-lado/2, ypos-lado/2, lado, lado);
+
+		glfwMakeContextCurrent(window);
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		{
+			glfwSetWindowShouldClose(window, true);
+		}
+	}
+	glfwTerminate();
 
   return 0;
 }
+
