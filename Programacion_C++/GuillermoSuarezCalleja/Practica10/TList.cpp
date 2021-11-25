@@ -119,10 +119,8 @@ TList* TList::mPushNumsOfFile(const char* _cName, char *& _aux)
 					{
 						*(_aux + j) = sCad[j];
 					}
-
 					// std::cout << _aux << std::endl;
 					node->mPush(_aux);
-
 					sCad = "";
 					uiValComma = 1;
 					bSemaph = false;
