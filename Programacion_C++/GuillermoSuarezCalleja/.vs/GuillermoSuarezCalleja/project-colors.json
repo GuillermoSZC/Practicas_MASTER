@@ -20,7 +20,12 @@
       "ProjectGuid": "5a71d3dd-6370-4ed5-843b-303ec5190b59",
       "DisplayName": "00Pruebas",
       "ColorIndex": 3
+    },
+    "0e2798e6-0d5c-4c73-bfc9-fc062c25104d": {
+      "ProjectGuid": "0e2798e6-0d5c-4c73-bfc9-fc062c25104d",
+      "DisplayName": "Practica11",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

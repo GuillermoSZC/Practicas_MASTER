@@ -3,14 +3,14 @@
 class  TList
 {
 private:
-	struct Nodo 
+	struct Nodo
 	{
 		const char* cData;
 		Nodo* next;
 		Nodo* prev;
 		int id;
 
-		Nodo(const char* value) 
+		Nodo(const char* value)
 		{
 			id = 0;
 			cData = value;
@@ -22,20 +22,41 @@ private:
 	int iSize;
 	TList::Nodo* head;
 	TList::Nodo* tail;
-public:
-	TList* nodeAux;
+	TList::Nodo* current;
 
+public:
 	TList()
 	{
 		iSize = 0;
 		head = nullptr;
 		tail = nullptr;
+		current = nullptr;
 	};
 
-	TList(TList* copy)
+	TList(TList*& list)
 	{
-		nodeAux->mPush(copy->mFirst());
-	};
+		iSize = 0;
+
+		tail = nullptr;
+		TList::Nodo* nNode = nullptr;
+		if (!list->head)
+		{
+			head = nullptr;
+		}
+		else
+		{
+			mPush(list->head->cData);
+			nNode = list->head->next;
+		}
+
+		while (nNode)
+		{
+			mPush(nNode->cData);
+			nNode = nNode->next;
+		}
+		delete nNode;
+		nNode = nullptr;
+	}
 
 	int mSize();
 	int mPush(const char*);
@@ -44,4 +65,5 @@ public:
 	const char* mPop();
 	void mShowList();
 	void mReset();
+	static TList GetReverseList(TList);
 };

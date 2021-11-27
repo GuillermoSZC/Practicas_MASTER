@@ -12,7 +12,7 @@ int TList::mPush(const char* cValue)
 	{
 		head = nNode;
 	}
-	else
+	else if(tail != nullptr)
 	{
 		tail->next = nNode;
 	}
@@ -50,7 +50,7 @@ const char* TList::mPop()
 		cString = head->cData;
 		--iSize;
 		TList::Nodo* temp = head;
-		
+
 		head = head->next;
 		delete temp;
 	}
@@ -58,11 +58,29 @@ const char* TList::mPop()
 	return cString;
 }
 
+TList TList::GetReverseList(TList lista)
+{
+	TList newList;
+	if (!newList.head)
+	{
+		newList.mPush(lista.tail->cData);
+		newList.head->next = nullptr;
+	}
+
+	while (newList.iSize != lista.iSize)
+	{
+		newList.mPush(lista.tail->prev->cData);
+		lista.tail = lista.tail->prev;
+	}
+
+	return newList;
+}
+
 void TList::mShowList()
 {
 	TList aux;
 	aux.head = head;
-
+	printf("\n");
 	while (aux.head != NULL)
 	{
 		std::cout << "Element " << aux.head->id << ": " << aux.head->cData << std::endl;
