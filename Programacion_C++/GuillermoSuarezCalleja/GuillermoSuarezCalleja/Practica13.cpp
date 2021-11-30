@@ -16,9 +16,8 @@ int main()
 	SPng* image = nullptr;
 
 	image->mDeleteAlphaChannel(tabla, size);
-
+	
 	delete[] tabla;
-	tabla = nullptr;
 
 	return 0;
 }

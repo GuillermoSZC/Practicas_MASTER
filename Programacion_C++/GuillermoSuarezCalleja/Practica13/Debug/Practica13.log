@@ -1,2 +1,8 @@
-﻿  Practica13.cpp
-  Practica13.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Debug\Practica13.exe
+﻿  Image.cpp
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica13\Image.h(18,14): error C3861: 'printf': identifier not found
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica13\Image.h(30,12): error C3861: 'printf': identifier not found
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica13\Image.h(42,12): error C3861: 'printf': identifier not found
+  Practica13.cpp
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica13\Practica13.cpp(20,16): error C2220: the following warning is treated as an error
+C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Practica13\Practica13.cpp(20,16): warning C4154: deletion of an array expression; conversion to pointer supplied
+  Generating Code...

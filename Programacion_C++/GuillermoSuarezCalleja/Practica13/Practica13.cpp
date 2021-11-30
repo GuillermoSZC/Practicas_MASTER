@@ -1,33 +1,23 @@
-#include <iostream>
-#include "Image.h"
+#include<iostream>
+#include"Image.h"
 
 
 int main()
 {
-	const char* type = "hola";
-	printf("%s\n",type);
+	SImage* tabla[4];
 
-	SImage* mTabla[5];
+	tabla[0] = new SJpg();
+	tabla[1] = new SPng();
+	tabla[2] = new SPng();
+	tabla[3] = new SJpg();
 
-	SImage* obj = mTabla[0];
-	SPng* oPng = static_cast<SPng*>(obj);
-	// SPng* oJpg = static_cast<SJpg*>(obj);
+	int size = sizeof(tabla) / 4;
 
-	oPng->RemoveAlphaChanel();
-	obj = mTabla[1];
-	oPng = static_cast<SPng*>(obj);
-	oPng->RemoveAlphaChanel();
-	obj = mTabla[2];
-	oPng = static_cast<SPng*>(obj);
-	oPng->RemoveAlphaChanel();
-	obj = mTabla[3];
-	oPng = static_cast<SPng*>(obj);
-	oPng->RemoveAlphaChanel();
-	obj = mTabla[4];
-	oPng = static_cast<SPng*>(obj);
-	oPng->RemoveAlphaChanel();
+	SPng* image = nullptr;
 
+	image->mDeleteAlphaChannel(tabla, size);
 
+	delete[] tabla;
 
 	return 0;
 }
