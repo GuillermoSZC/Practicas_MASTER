@@ -36,7 +36,7 @@ public:
 	TList(TList*& list)
 	{
 		iSize = 0;
-
+		head = nullptr;
 		tail = nullptr;
 		TList::Nodo* nNode = nullptr;
 		if (!list->head)

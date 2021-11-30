@@ -61,6 +61,7 @@ const char* TList::mPop()
 TList TList::GetReverseList(TList lista)
 {
 	TList newList;
+
 	if (!newList.head)
 	{
 		newList.mPush(lista.tail->cData);

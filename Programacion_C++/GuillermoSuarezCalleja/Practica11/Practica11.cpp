@@ -10,13 +10,14 @@ int main()
 	nodo->mPush("123");
 	nodo->mPush("234");
 	nodo->mPush("456");
-	
+
 	TList nodo2 = TList::GetReverseList(nodo);
 
-	std::cout << "\n..First element of list.. NODO 2\n" << nodo2.mFirst() << std::endl;
-
+	std::cout << "\n..First element of list.. NODO 3\n" << nodo2.mFirst() << std::endl;
+	std::cout << "NODO 2: \n";
 	nodo2.mShowList();
 	
+
 	std::cout << "\nSize of list: \n" << nodo->mSize() << std::endl;
 
 	std::cout << "\n..First element of list..\n" << nodo->mFirst() << std::endl;
