@@ -74,8 +74,9 @@ void Parte4()
 {
 	char cCadena[] = { 'H', 'o', 'l', 'a', '\0' };
 	char* ptr = reinterpret_cast<char*>(&cCadena);
-	const int iTam = sizeof(cCadena);
+	int iTam = sizeof(cCadena);
 	std::vector<char> vCadena(iTam);
+
 
 	for (int x = 0, y = iTam - 1; x < iTam - 1; ++x, --y)
 	{

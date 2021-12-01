@@ -17,7 +17,11 @@ int main()
 
 	image->mDeleteAlphaChannel(tabla, size);
 
-	delete[] tabla;
+
+	for (int i = 0; i < size; ++i)
+	{
+		delete tabla[i];
+	}
 
 	return 0;
 }

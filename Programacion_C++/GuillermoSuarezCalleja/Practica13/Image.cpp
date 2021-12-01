@@ -21,4 +21,5 @@ void SPng::mDeleteAlphaChannel(SImage** tabla, int size)
 			std::cout << pTabla->bType<< std::endl;
 		}
 	}
+	printf("\n");
 }
