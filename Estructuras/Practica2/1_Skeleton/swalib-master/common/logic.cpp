@@ -7,7 +7,7 @@ void gameManager::mLogic(float fixed)
 	// Run balls
 	for (unsigned int i = 0; i < NUM_BALLS; i++) {
 		// New Pos.
-		vec2 newpos = balls[i].pos + balls[i].vel;
+		vec2 newpos = balls[i].pos + balls[i].vel * fixed;
 
 		// Collision detection.
 		bool collision = false;

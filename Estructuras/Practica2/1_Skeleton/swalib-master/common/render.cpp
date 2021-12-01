@@ -21,12 +21,8 @@ void gameManager::mRender(float time, unsigned int frames)
 
 	std::string sTime = std::to_string((int)time);
 	
-	frames *= 2;
-
 	std::string	sFrames = std::to_string(frames);
 	
-
-
 	// Text
 
 	FONT_DrawString(vec2(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD!");
