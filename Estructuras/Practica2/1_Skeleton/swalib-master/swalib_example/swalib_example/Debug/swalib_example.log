@@ -1,1 +1,5 @@
-﻿  swalib_example.vcxproj -> C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+﻿  example.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\common\example.cpp(48,13): warning C4244: '=': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+  logic.cpp
+  Generando código...
+  swalib_example.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

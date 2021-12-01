@@ -6,15 +6,22 @@ float frec = 0.f;
 
 void StartCounter();
 float GetTime();
+double clockToMilliseconds(clock_t);
 
 int Main(void)
 {
 	gameManager* oManager = new gameManager(); // Create obj gameManager()
+
 	StartCounter();
+
 	float previousTime = GetTime();
 	float currentTime = 0.f;
-	float elapsed = 0.f;
-	// float fixedTick = 60.f / 1.f;
+	float fixedTick = 1.f / 60.f;
+	float elapsedTime = 0.f;
+	clock_t deltaTime = 0;
+	unsigned int frames = 0;
+	float prevFps = GetTime();
+	float currentFps = 0.f;
 
 	// Init game state.
 	oManager->init();
@@ -25,18 +32,26 @@ int Main(void)
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
 
 		currentTime = GetTime();
-		elapsed = currentTime - previousTime;
+		elapsedTime = currentTime - previousTime;
 		previousTime = currentTime;
 
-		// Logic
-		oManager->mLogic();
+		while (elapsedTime >= fixedTick)
+		{
+			// Logic
+			oManager->mLogic(fixedTick);
+			elapsedTime -= fixedTick;
+			currentFps++;
+		}
 
+		if (currentTime - prevFps >= 1.0f)
+		{
+			frames = currentFps;
+			currentFps = 0.f;
+			prevFps++;
+		}
+		
 		// Render
-		oManager->mRender(currentTime);
-
-		SYS_Pump();	// Process Windows messages.
-
-		// SYS_Sleep(17);	// To force 60 fps - Practica 2.0
+		oManager->mRender(currentTime, frames);
 	}
 
 	// End app.

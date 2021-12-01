@@ -14,8 +14,8 @@ public:
 
 	void init();
 	void mSetUpRender();
-	void mRender(float);
-	void mLogic();
+	void mRender(float, unsigned int);
+	void mLogic(float);
 	void shutdownRender();
 	void shutdown();
 

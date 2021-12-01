@@ -2,7 +2,7 @@
 
 extern tBalls balls;
 
-void gameManager::mLogic()
+void gameManager::mLogic(float fixed)
 {
 	// Run balls
 	for (unsigned int i = 0; i < NUM_BALLS; i++) {
@@ -40,4 +40,7 @@ void gameManager::mLogic()
 			balls[i].vel.y *= -1.0;
 		}
 	}
+
+	SYS_Pump();
+	// SYS_Sleep(17);	// To force 60 fps - Practica 2.0
 }
