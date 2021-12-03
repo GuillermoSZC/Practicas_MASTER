@@ -2,7 +2,7 @@
 #include <string>
 extern tBalls balls;
 
-void gameManager::mRender(float time, unsigned int frames)
+void gameManager::mRender(float time, float frames, float logicTime)
 {
 	// Render
 	glClear(GL_COLOR_BUFFER_BIT);	// Clear color buffer to preset values.
@@ -21,7 +21,9 @@ void gameManager::mRender(float time, unsigned int frames)
 
 	std::string sTime = std::to_string((int)time);
 	
-	std::string	sFrames = std::to_string(frames);
+	std::string	sFrames = std::to_string((int)frames);
+
+	std::string	sLogicTime = std::to_string((int)logicTime);
 	
 	// Text
 
@@ -29,7 +31,9 @@ void gameManager::mRender(float time, unsigned int frames)
 	std::string sCad = "TIME: " + sTime;
 	FONT_DrawString(vec2(SCR_WIDTH / 2 - 300, 450), sCad.c_str());
 	sCad = "FPS: " + sFrames;
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - -200, 450), sCad.c_str());
+	FONT_DrawString(vec2(SCR_WIDTH / 2 - -190, 450), sCad.c_str());
+	sCad = "L-TIME: " + sLogicTime;
+	FONT_DrawString(vec2(SCR_WIDTH / 2 - 300, 420), sCad.c_str());
 	
 
 

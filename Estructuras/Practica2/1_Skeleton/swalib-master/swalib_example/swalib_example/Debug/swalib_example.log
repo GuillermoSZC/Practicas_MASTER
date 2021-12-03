@@ -1,16 +1,1 @@
-﻿  core.cpp
-  example.cpp
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\common\example.cpp(51,34): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-  font.cpp
-  init.cpp
-  lodepng.cpp
-  logic.cpp
-  render.cpp
-  setRender.cpp
-  shutdown.cpp
-  shutdownRender.cpp
-  stdafx.cpp
-  sys_win.cpp
-  Generating Code...
-  LINK : C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe not found or not built by the last incremental link; performing full link
-  swalib_example.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+﻿  swalib_example.vcxproj -> C:\Users\guillermo.suarez\Documents\GitHub\Practicas_MASTER\Estructuras\Practica2\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

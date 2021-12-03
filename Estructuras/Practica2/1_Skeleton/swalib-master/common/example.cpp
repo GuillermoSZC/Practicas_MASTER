@@ -6,7 +6,6 @@ float frec = 0.f;
 
 void StartCounter();
 float GetTime();
-double clockToMilliseconds(clock_t);
 
 int Main(void)
 {
@@ -19,10 +18,11 @@ int Main(void)
 	float fixedTick = 1.f / 60.f;
 	float elapsedTime = 0.f;
 	clock_t deltaTime = 0;
-	unsigned int frames = 0;
+	float frames = 0.f;
 	float prevFps = GetTime();
 	float currentFps = 0.f;
-
+	float logicTime = 0.f;
+	float capTime = 1.f / 15.f; // tiempo limite para evitar espiral de la muerte
 	// Init game state.
 	oManager->init();
 
@@ -30,17 +30,26 @@ int Main(void)
 	oManager->mSetUpRender();
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
-
 		currentTime = GetTime();
-		elapsedTime = currentTime - previousTime;
+		elapsedTime += currentTime - previousTime;
 		previousTime = currentTime;
 
 		while (elapsedTime >= fixedTick)
 		{
 			// Logic
-			oManager->mLogic(fixedTick);
-			elapsedTime -= fixedTick;
+			oManager->mLogic(elapsedTime); // paso elapsed para el punto 2.7 de la practica
+			if (elapsedTime >= capTime)
+			{ // si ha superado el limite lo igualo a fixedTick
+				elapsedTime = fixedTick;
+			}
+			else
+			{
+				elapsedTime -= fixedTick;
+			}
+			logicTime += fixedTick;
 			currentFps++;
+
+			SYS_Sleep(17);
 		}
 
 		if (currentTime - prevFps >= 1.0f)
@@ -49,9 +58,11 @@ int Main(void)
 			currentFps = 0.f;
 			prevFps++;
 		}
-		
+
 		// Render
-		oManager->mRender(currentTime, frames);
+		oManager->mRender(currentTime, frames, logicTime);
+
+		SYS_Pump();
 	}
 
 	// End app.
@@ -60,6 +71,7 @@ int Main(void)
 	oManager->shutdown();
 
 	delete oManager; // Delete obj gameManager()
+	oManager = nullptr;
 
 	return 0;
 }
