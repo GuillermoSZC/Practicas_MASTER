@@ -13,8 +13,6 @@ int main()
 	switch (opt)
 	{
 	case 1: // probar si se pueden introducir int
-		
-
 		obj.mPush(1);
 		obj.mPush(2);
 		obj.mPush(3);
@@ -33,6 +31,7 @@ int main()
 		std::cout << "\n..Reset list..\n";
 		obj.mReset();
 		break;
+
 	case 2: // Probar si se pueden introducir cadenas const char*
 		obj2.mPush("hello");
 		obj2.mPush("bye");
@@ -52,7 +51,8 @@ int main()
 		std::cout << "\n..Reset list..\n";
 		obj2.mReset();
 		break;
-	case 3: // probar si se pueden introducir letras
+
+	case 3: // probar si se pueden introducir char
 		obj3.mPush('a');
 		obj3.mPush('b');
 		obj3.mPush('c');
@@ -71,6 +71,7 @@ int main()
 		std::cout << "\n..Reset list..\n";
 		obj3.mReset();
 		break;
+
 	default:
 		break;
 	}
