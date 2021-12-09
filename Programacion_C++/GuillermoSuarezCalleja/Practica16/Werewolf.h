@@ -33,9 +33,4 @@ public:
 	{
 		std::cout << "\nHP: " << iHP << ", Attack : " << iAtk << ", Defense : " << iDef << "\n\n";
 	}
-
-	void mSetHp(unsigned int);
-	void mSetAtk(unsigned int);
-	void mSetDef(unsigned int);
-	void mSetStats(unsigned int, unsigned int, unsigned int);
 };

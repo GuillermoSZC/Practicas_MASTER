@@ -19,25 +19,3 @@ Werewolf::Werewolf(const char* _cName)
 	cType = "Werewolf boss";
 	std::cout << "Objeto Hombre lobo creado, nombre: " << cName << "\n";
 }
-
-void Werewolf::mSetHp(unsigned int _hp)
-{
-	iHP = _hp;
-}
-
-void Werewolf::mSetAtk(unsigned int _atk)
-{
-	iAtk = _atk;
-}
-
-void Werewolf::mSetDef(unsigned int _def)
-{
-	iDef = _def;
-}
-
-void Werewolf::mSetStats(unsigned int _hp, unsigned int _atk, unsigned int _def)
-{
-	iHP = _hp;
-	iAtk = _atk;
-	iDef = _def;
-}

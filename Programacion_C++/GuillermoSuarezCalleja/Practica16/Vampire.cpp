@@ -19,25 +19,3 @@ Vampire::Vampire(const char* _cName)
 	cType = "Vampire boss";
 	std::cout << "Objeto Vampiro creado, nombre: " << cName << "\n";
 }
-
-void Vampire::mSetHp(unsigned int _hp) 
-{
-	iHP = _hp;
-}
-
-void Vampire::mSetAtk(unsigned int _atk)
-{
-	iAtk = _atk;
-}
-
-void Vampire::mSetDef(unsigned int _def)
-{
-	iDef = _def;
-}
-
-void Vampire::mSetStats(unsigned int _hp, unsigned int _atk, unsigned int _def)
-{
-	iHP = _hp;
-	iAtk = _atk;
-	iDef = _def;
-}
