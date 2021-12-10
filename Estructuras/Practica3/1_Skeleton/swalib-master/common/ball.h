@@ -5,18 +5,28 @@
 #include "vector2d.h"
 
 
-struct Ball	// Info Ball
+class Ball	// Info Ball
 {
+public:
 	vec2   pos;	// Position.
 	vec2   vel;	// Velocity.
 	GLuint gfx;	// OpenGL for id. for visualization purposes. 
 	float  radius;	// Radius.
 
-	Ball() :
-		pos(0.0f),
-		vel(0.0f),
-		gfx(0),
-		radius(0.0f)
-	{}
+	// getters
+	Ball();
+	~Ball();
+	vec2 getPos();
+	vec2 getVel();
+	float getRadius();
+	GLuint getGfx();
+
+	// setters
+	void setPos(vec2);
+	void setVel(vec2);
+	void setRadius(float);
+	void setGfx(GLuint);
+
+	// Other funcions..
+	void Slot(float, Ball[], const unsigned int, int);
 };
-// Array of balls.

@@ -49,7 +49,7 @@ int Main(void)
 			logicTime += fixedTick;
 			currentFps++;
 
-			SYS_Sleep(17);
+			// SYS_Sleep(17);
 		}
 
 		if (currentTime - prevFps >= 1.0f)

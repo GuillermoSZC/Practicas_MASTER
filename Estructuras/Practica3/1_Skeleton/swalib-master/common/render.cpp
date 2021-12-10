@@ -1,5 +1,6 @@
 #include "gameManager.h"
 #include <string>
+
 extern tBalls balls;
 
 void gameManager::mRender(float time, float frames, float logicTime)
