@@ -1,2 +1,3 @@
-﻿  logic.cpp
-  swalib_example.vcxproj -> C:\Users\guillermo.suarez\OneDrive - U-tad\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+﻿  example.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  swalib_example.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

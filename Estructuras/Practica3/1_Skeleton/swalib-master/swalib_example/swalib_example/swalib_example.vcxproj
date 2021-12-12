@@ -133,6 +133,7 @@
     <ClCompile Include="..\..\common\shutdownRender.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
+    <ClCompile Include="..\..\common\timeCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\ball.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
+    <ClInclude Include="..\..\common\timeCounter.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

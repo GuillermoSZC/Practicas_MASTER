@@ -1,28 +1,15 @@
 #include "gameManager.h"
 #include<iostream>
 
-__int64 counterStart = 0;
-float frec = 0.f;
-
-void StartCounter();
-float GetTime();
 
 int Main(void)
 {
 	gameManager* oManager = new gameManager(); // Create obj gameManager()
+	timeCounter* oTimer = new timeCounter();
 
-	StartCounter();
+	oTimer->StartCounter();
+	oTimer->initPrevs();
 
-	float previousTime = GetTime();
-	float currentTime = 0.f;
-	float fixedTick = 1.f / 60.f;
-	float elapsedTime = 0.f;
-	clock_t deltaTime = 0;
-	float frames = 0.f;
-	float prevFps = GetTime();
-	float currentFps = 0.f;
-	float logicTime = 0.f;
-	float capTime = 1.f / 15.f; // tiempo limite para evitar espiral de la muerte
 	// Init game state.
 	oManager->init();
 
@@ -30,37 +17,23 @@ int Main(void)
 	oManager->mSetUpRender();
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
-		currentTime = GetTime();
-		elapsedTime += currentTime - previousTime;
-		previousTime = currentTime;
+		oTimer->currentTime = oTimer->GetTime();
+		oTimer->elapsedTime += oTimer->currentTime - oTimer->previousTime;
+		oTimer->previousTime = oTimer->currentTime;
+		// oTimer->initSlotsToProcess();
 
-		while (elapsedTime >= fixedTick)
+		while (oTimer->elapsedTime >= oTimer->fixedTick)
 		{
 			// Logic
-			oManager->mLogic(elapsedTime); // paso elapsed para el punto 2.7 de la practica
-			if (elapsedTime >= capTime)
-			{ // si ha superado el limite lo igualo a fixedTick
-				elapsedTime = fixedTick;
-			}
-			else
-			{
-				elapsedTime -= fixedTick;
-			}
-			logicTime += fixedTick;
-			currentFps++;
-
+			oManager->mLogic(oTimer->elapsedTime); // paso elapsed para el punto 2.7 de la practica
+			oTimer->fixElapsed();
 			// SYS_Sleep(17);
 		}
 
-		if (currentTime - prevFps >= 1.0f)
-		{
-			frames = currentFps;
-			currentFps = 0.f;
-			prevFps++;
-		}
+		oTimer->calcFPS();
 
 		// Render
-		oManager->mRender(currentTime, frames, logicTime);
+		oManager->mRender(oTimer->currentTime, oTimer->frames, oTimer->logicTime);
 
 		SYS_Pump();
 	}
@@ -74,26 +47,4 @@ int Main(void)
 	oManager = nullptr;
 
 	return 0;
-}
-
-void StartCounter()
-{
-	LARGE_INTEGER li;
-
-	// Performance counter
-	if (QueryPerformanceFrequency(&li))
-	{
-		std::cout << "Frequency failed\n";
-	}
-	frec = float(li.QuadPart);
-
-	QueryPerformanceCounter(&li);
-	counterStart = li.QuadPart;
-}
-
-float GetTime()
-{
-	LARGE_INTEGER li;
-	QueryPerformanceCounter(&li);
-	return float(li.QuadPart - counterStart) / frec;
 }

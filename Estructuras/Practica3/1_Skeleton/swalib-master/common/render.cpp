@@ -17,7 +17,7 @@ void gameManager::mRender(float time, float frames, float logicTime)
 
 	// Render balls
 	for (unsigned int i = 0; i < NUM_BALLS; i++) {
-		CORE_RenderCenteredSprite(balls[i].pos, vec2(balls[i].radius * 2.f, balls[i].radius * 2.f), balls[i].gfx);
+		CORE_RenderCenteredSprite(balls[i].getPos(), vec2(balls[i].getRadius() * 2.f, balls[i].getRadius() * 2.f), balls[i].getGfx());
 	}
 
 	std::string sTime = std::to_string((int)time);

@@ -1,5 +1,6 @@
 #include "gameManager.h"
 #include<iostream>
+
 extern tBalls balls;
 
 void gameManager::mLogic(float elapsed)

@@ -3,16 +3,16 @@
 #include "core.h"
 #include "font.h"
 #include "vector2d.h"
-
+#include "timeCounter.h"
 
 class Ball	// Info Ball
 {
-public:
+private:
 	vec2   pos;	// Position.
 	vec2   vel;	// Velocity.
 	GLuint gfx;	// OpenGL for id. for visualization purposes. 
 	float  radius;	// Radius.
-
+public:
 	// getters
 	Ball();
 	~Ball();
@@ -29,4 +29,5 @@ public:
 
 	// Other funcions..
 	void Slot(float, Ball[], const unsigned int, int);
+	void LogicSlot(float, Ball[], const unsigned int, int, timeCounter*);
 };

@@ -57,8 +57,9 @@ void Ball::setGfx(GLuint _glGfx)
 void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i)
 {
 		// New Pos.
-		// multiplico por fixedVel para cambiar la velocidad de las bolas y *10 para que vayan mas rapido 
+		// multiplico por fixedVel para cambiar la velocidad de las bolas y *7 para que vayan mas rapido 
 		vec2 newpos = balls[i].pos + balls[i].vel * (elapsed * 10);
+
 
 		// Collision detection.
 		bool collision = false;
@@ -80,19 +81,28 @@ void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i
 		}
 		else {
 			// Rebound!
-			balls[i].vel = balls[i].vel * -1.f;
-			balls[colliding_ball].vel = balls[colliding_ball].vel * -1.f;
+			balls[i].vel *= -1.f; 
+			balls[colliding_ball].vel *= -1.f;
 		}
 
 		// Rebound on margins.
-		if ((balls[i].pos.x > SCR_WIDTH) || (balls[i].pos.x < 0)) {
+		if ((balls[i].pos.x >= SCR_WIDTH) || (balls[i].pos.x < 0)) {
 			balls[i].vel.x *= -1.0;
 		}
-		if ((balls[i].pos.y > SCR_HEIGHT) || (balls[i].pos.y < 0)) {
+		if ((balls[i].pos.y >= SCR_HEIGHT) || (balls[i].pos.y < 0)) {
 			balls[i].vel.y *= -1.0;
 		}
 }
-	
-	
-	
 
+void Ball::LogicSlot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i, timeCounter* _Timer)
+{
+
+	// _Timer.initSlotsToProcess();
+	while (_Timer->processSlots())
+	{
+		Slot(elapsed, balls, NUM_BALLS, i);
+		_Timer->fixElapsed();
+	}
+	_Timer->calcFPS();
+	
+}
