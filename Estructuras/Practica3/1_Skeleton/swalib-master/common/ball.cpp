@@ -97,7 +97,7 @@ void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i
 void Ball::LogicSlot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i, timeCounter* _Timer)
 {
 
-	// _Timer.initSlotsToProcess();
+	 _Timer->initSlotsToProcess();
 	while (_Timer->processSlots())
 	{
 		Slot(elapsed, balls, NUM_BALLS, i);

@@ -1,3 +1,16 @@
 ﻿  example.cpp
 C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  init.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  logic.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  render.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  setRender.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  shutdown.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  shutdownRender.cpp
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\common\timeCounter.h(1,14): warning C4081: expected 'newline'; found 'void'
+  Generating Code...
   swalib_example.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\Practica3\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
