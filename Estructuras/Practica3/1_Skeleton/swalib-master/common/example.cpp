@@ -17,12 +17,10 @@ int Main(void)
 	oManager->mSetUpRender();
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
-		oTimer->currentTime = oTimer->GetTime();
-		oTimer->elapsedTime += oTimer->currentTime - oTimer->previousTime;
-		oTimer->previousTime = oTimer->currentTime;
-		// oTimer->initSlotsToProcess();
 
-		while (oTimer->elapsedTime >= oTimer->fixedTick)
+		oTimer->initSlotsToProcess();
+
+		while (oTimer->processSlots())
 		{
 			// Logic
 			oManager->mLogic(oTimer->elapsedTime); // paso elapsed para el punto 2.7 de la practica

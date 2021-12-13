@@ -32,7 +32,7 @@ float timeCounter::getCapTime() const { return capTime; }
 void timeCounter::initSlotsToProcess()
 {
 	currentTime = timeCounter::GetTime();
-	elapsedTime = currentTime - previousTime;
+	elapsedTime = currentTime*1.5 - previousTime*1.5; // ? mult 1.5f porque?? @TODO: 
 	previousTime = currentTime;
 }
 
