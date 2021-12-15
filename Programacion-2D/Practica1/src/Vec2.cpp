@@ -9,78 +9,81 @@ vec2::vec2(float x, float y)
 	v[1] = y;
 }
 
-vec2 vec2::suma(vec2& a, vec2& b)
+vec2 vec2::operator+(const vec2& a)
 {
 	vec2 sum;
-	sum.v[0] = a.v[0] + b.v[0];
-	sum.v[1] = a.v[1] + b.v[1];
+	sum.x = x + a.x;
+	sum.y = y + a.y;
 
 	return sum;
 }
-vec2 vec2::resta(vec2& a, vec2& b)
+vec2 vec2::operator-(const vec2& a)
 {
 	vec2 rest;
-	rest.v[0] = a.v[0] - b.v[0];
-	rest.v[1] = a.v[1] - b.v[1];
+
+	rest.x = x - a.x;
+	rest.y = y - a.y;
 
 	return rest;
 }
 
-vec2 vec2::producto(vec2& a, vec2& b)
+vec2 vec2::operator*(const vec2& a)
 {
 	vec2 prod;
-	prod.v[0] = a.v[0] * b.v[0];
-	prod.v[1] = a.v[1] * b.v[1];
+	prod.x = x * a.x;
+	prod.y = y * a.y;
 
 	return prod;
 }
 
-vec2 vec2::division(vec2& a, vec2& b)
+vec2 vec2::operator/(const vec2& a)
 {
 	vec2 div;
-	div.v[0] = a.v[0] / b.v[0];
-	div.v[1] = a.v[1] / b.v[1];
+	div.x = x / a.x;
+	div.y = y / a.y;
 
 	return div;
 }
 
-float vec2::vAbsoluto(vec2& a)
+float vec2::vAbsoluto(const vec2 &_vector) const
 {
-	float vAbs;
-	float prod = (float)pow(a.v[0], 2) + (float)pow(a.v[1], 2);
-	vAbs = (float)sqrt(prod);
-
-	return vAbs;
+	return sqrtf(_vector.v[0] * _vector.v[0] + _vector.v[1] * _vector.v[1]);
 }
 
-vec2 vec2::normal(vec2& a)
+vec2 vec2::normal(const vec2& _vector)
 {
-	float nm = vAbsoluto(a);
-	if (nm == 0)
+	vec2 vector_;
+	float nm = vAbsoluto(_vector);
+	if (nm == 0.f)
 	{
-		return vec2(0, 0);
+		return vec2(0.f, 0.f);
 	}
+	vector_.v[0] = _vector.v[0] / nm;
+	vector_.v[1] = _vector.v[1] / nm;
 
-	return vec2((a.x / nm), a.y /nm);
+	return vector_;
 }
 
-float vec2::pEscalar(vec2& a, vec2& b)
+float vec2::pEscalar(const vec2& a, const vec2& b)
 {
-	float escalar = a.v[0] * b.v[0] + a.v[1] * b.v[1];
+	float escalar = a.x * b.y + a.x * b.y;
 
 	return escalar;
 }
 
 float vec2::angle(const vec2& other) const 
 {
-	float x = 0.f;
-
-	return x;
+	double fAng = atan2f(y - other.y, x - other.x) * (180 / PI);
+	if (fAng < 0) { fAng += 360.f; }
+	
+	return (float)fAng;
 }
 
 float vec2::distance(const vec2& other) const
 {
-	float x = 0.f;
+	vec2 vector(x, y);
+	vector = vector - other;
+	float fDistance = vAbsoluto(vector);
 
-	return x;
+	return fDistance;
 }
