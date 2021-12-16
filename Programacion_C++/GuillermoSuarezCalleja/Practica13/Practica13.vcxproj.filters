@@ -18,12 +18,24 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PNG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JPG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Practica13.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PNG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JPG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

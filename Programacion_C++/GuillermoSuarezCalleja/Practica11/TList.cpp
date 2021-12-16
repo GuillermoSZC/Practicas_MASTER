@@ -24,17 +24,17 @@ int TList::mPush(const char* cValue)
 	return head->id;
 }
 
-int TList::mSize()
+int TList::mSize() const
 {
 	return iSize;
 }
 
-const char* TList::mFirst()
+const char* TList::mFirst() const
 {
 	return head->cData;
 }
 
-const char* TList::mNext()
+const char* TList::mNext() const
 {
 	TList::Nodo* tmp = head;
 	tmp = head->next;
@@ -62,13 +62,15 @@ TList TList::GetReverseList(TList lista)
 {
 	TList newList;
 
+	// si el head de la nueva lista es NULL le paso el final de la lista que paso por parametro
 	if (!newList.head)
 	{
 		newList.mPush(lista.tail->cData);
 		newList.head->next = nullptr;
 	}
-
-	while (newList.iSize != lista.iSize)
+	// comparo los tamaños de cada lista para ir haciendo push a la nueva lista
+	// empezando por el final (tail e iterando con el prev) de la lista que paso por parametro
+	while (newList.iSize != lista.iSize) 
 	{
 		newList.mPush(lista.tail->prev->cData);
 		lista.tail = lista.tail->prev;
@@ -77,7 +79,7 @@ TList TList::GetReverseList(TList lista)
 	return newList;
 }
 
-void TList::mShowList()
+void TList::mShowList() const
 {
 	TList aux;
 	aux.head = head;

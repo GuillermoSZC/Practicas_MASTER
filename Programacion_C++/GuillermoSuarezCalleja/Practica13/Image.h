@@ -16,7 +16,7 @@ struct SImage
 		bType = "image";
 		iAlpha = 255;
 	}
-	~SImage() { printf("Objeto de la clase SImage borrado.\n"); }
+	virtual ~SImage() { printf("Objeto de la clase SImage borrado.\n"); } 
 	int DrawRGBImage(unsigned char* pBuffer);
 };
 
@@ -28,19 +28,15 @@ struct SJpg : public SImage
 		m_oImage = nullptr;
 		bType = "jpg";
 	}
-	~SJpg() { printf("Objeto de la clase JPG borrado.\n"); }
+	~SJpg() override { printf("Objeto de la clase JPG borrado.\n"); }
 	int mDrawJPGImage(unsigned char* pBuffer);
 };
 
 struct SPng : public SImage
 {
 	SImage* m_oImage;
-	SPng()
-	{
-		m_oImage = nullptr;
-		bType = "png";
-	}
-	~SPng() { printf("Objeto de la clase PNG borrado.\n"); }
+	SPng();
+	~SPng() override;
 	int mDrawPNGImage(unsigned char* pBuffer);
 	void mDeleteAlphaChannel(SImage**, int);
 };

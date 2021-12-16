@@ -2,6 +2,17 @@
 #include<iostream>
 
 
+SPng::SPng()
+{
+	m_oImage = nullptr;
+	bType = "png";
+}
+
+SPng::~SPng()
+{
+	printf("Objeto de la clase PNG borrado.\n"); 
+}
+
 void SPng::mDeleteAlphaChannel(SImage** tabla, int size)
 {
 	SImage* pTabla = nullptr;

@@ -39,16 +39,20 @@ public:
 		head = nullptr;
 		tail = nullptr;
 		TList::Nodo* nNode = nullptr;
+		// si el head de la lista no es NULL, lo igualo a NULL
 		if (!list->head)
 		{
 			head = nullptr;
 		}
-		else
+		else 
 		{
+			// si está vacio inserto a la lista el nodo correspondiente y despues apunto 
+			// al siguiente nodo de la lista que paso por parametro
 			mPush(list->head->cData);
 			nNode = list->head->next;
 		}
-
+		// mientras el nodo no sea NULL voy haciendo el push correspondiente para 
+		// hacer la copia de la lista 
 		while (nNode)
 		{
 			mPush(nNode->cData);
@@ -58,12 +62,12 @@ public:
 		nNode = nullptr;
 	}
 
-	int mSize();
+	int mSize() const;
 	int mPush(const char*);
-	const char* mFirst();
-	const char* mNext();
+	const char* mFirst() const;
+	const char* mNext() const;
 	const char* mPop();
-	void mShowList();
+	void mShowList() const;
 	void mReset();
 	static TList GetReverseList(TList);
 };

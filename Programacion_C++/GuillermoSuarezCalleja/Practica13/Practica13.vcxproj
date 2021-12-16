@@ -20,9 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Image.h" />
+    <ClInclude Include="JPG.h" />
+    <ClInclude Include="PNG.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="JPG.cpp" />
+    <ClCompile Include="PNG.cpp" />
     <ClCompile Include="Practica13.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

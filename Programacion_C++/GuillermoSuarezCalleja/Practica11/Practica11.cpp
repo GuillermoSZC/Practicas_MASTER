@@ -13,7 +13,7 @@ int main()
 
 	TList nodo2 = TList::GetReverseList(nodo);
 
-	std::cout << "\n..First element of list.. NODO 3\n" << nodo2.mFirst() << std::endl;
+	std::cout << "\n..First element of list.. NODO 2\n" << nodo2.mFirst() << std::endl;
 	std::cout << "NODO 2: \n";
 	nodo2.mShowList();
 	
@@ -26,8 +26,11 @@ int main()
 
 	std::cout << "\n..First element of list erased..\n" << nodo->mPop() << std::endl;
 
-	std::cout << "\nSize of list: \n" << nodo->mSize() << std::endl;
+	std::cout << "\n..First element of list..\n" << nodo->mFirst() << std::endl;
 
+	std::cout << "\n..Next element of list..\n" << nodo->mNext() << std::endl;
+
+	std::cout << "\nSize of list: \n" << nodo->mSize() << std::endl;
 
 
 	std::cout << "\n..Reset list..\n";
