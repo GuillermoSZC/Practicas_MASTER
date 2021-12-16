@@ -1,36 +1,25 @@
 #include "Image.h"
-#include<iostream>
 
-
-SPng::SPng()
+SImage::SImage()
 {
-	m_oImage = nullptr;
-	bType = "png";
+	m_iResolutionX = 1080;
+	m_iResolutionY = 720;
+	m_iColorDepth = 255;
+	cType = "image";
+	uiAlpha = 255;
 }
 
-SPng::~SPng()
+SImage::~SImage() 
 {
-	printf("Objeto de la clase PNG borrado.\n"); 
+	printf("Objeto de la clase SImage borrado.\n"); 
 }
 
-void SPng::mDeleteAlphaChannel(SImage** tabla, int size)
+void SImage::setAlpha(unsigned int _uiAlpha)
 {
-	SImage* pTabla = nullptr;
-	SPng* pPng = nullptr;
+	uiAlpha = _uiAlpha;
+}
 
-	for (int i = 0; i < size; ++i)
-	{
-		pTabla = *(tabla + i);
-		if (strcmp(tabla[i]->bType, "png") == 0)
-		{
-			pPng = static_cast<SPng*>(pTabla);
-			pPng->iAlpha = 0;
-			std::cout << "Alpha channel borrado." << std::endl;
-		}
-		else
-		{
-			std::cout << pTabla->bType<< std::endl;
-		}
-	}
-	printf("\n");
+void SImage::setType(const char* _cType)
+{
+	cType = _cType;
 }

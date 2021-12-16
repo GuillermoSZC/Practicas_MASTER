@@ -24,19 +24,20 @@ int main()
 		}
 	} while (bVal);
 
-	if (iOpt == 0)
+	if (iOpt == 0) // leer numero de caracteres del fichero
 	{
-		vFile = obj->mOpenFile(cfName, "r");
+		vFile = obj->mOpenFile(cfName, "r"); // se abre el fichero para lectura
 		std::cout << "Number of chars read: " << obj->mReadFile(vFile, cBuffer, cAux) << std::endl;
 		delete cAux;
 		cAux = nullptr;
 	}
-	else if (iOpt == 1)
+	else if (iOpt == 1) // caracteres que se han escrito en el fichero
 	{
-		vFile = obj->mOpenFile(cfName, "w");
+		vFile = obj->mOpenFile(cfName, "w"); // se abre el fichero para escritura
 		std::cout << "Characters that was written: " << obj->mWriteFile(vFile, cText, iSize) << std::endl;
 	}
 
+	// DELETE
 	delete obj;
 	obj = nullptr;
 

@@ -1,6 +1,7 @@
-#include<iostream>
-#include"Image.h"
-
+#include <iostream>
+#include "Image.h"
+#include "JPG.h"
+#include "PNG.h"
 
 int main()
 {
@@ -13,9 +14,9 @@ int main()
 
 	int size = sizeof(tabla) / 4;
 
-	SPng* image = nullptr;
+	SPng* pngImg = nullptr;
 
-	image->mDeleteAlphaChannel(tabla, size);
+	pngImg->mDeleteAlphaChannel(tabla, size);
 
 	for (int i = 0; i < size; ++i)
 	{

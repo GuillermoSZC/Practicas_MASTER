@@ -143,6 +143,7 @@
     <ClInclude Include="FileManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Practica06.cpp" />
   </ItemGroup>
   <ItemGroup>

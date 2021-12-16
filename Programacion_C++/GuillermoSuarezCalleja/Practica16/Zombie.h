@@ -25,7 +25,6 @@ public:
 
 	virtual const char* vmGetName() const override
 	{
-		// std::cout << "Nombre del Zombie: " << cName << "\n";
 		return cName;
 	}
 

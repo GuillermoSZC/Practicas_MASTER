@@ -40,7 +40,7 @@ int main()
 		obj[i]->vmWrite("prueba.txt");
 		obj[i]->vmClose("prueba.txt");
 		std::cout << "\nEXPLICIT CALL OF CSTREAM..\n"; 
-		// Llamo unicamente a la clase CStream de manera explicita
+		// Llamo unicamente a la clase CStream de manera explicita (necesario ->CStream::)
 		obj[i]->CStream::vmOpen("prueba.txt");
 		obj[i]->CStream::vmRead("prueba.txt");
 		obj[i]->CStream::vmWrite("prueba.txt");

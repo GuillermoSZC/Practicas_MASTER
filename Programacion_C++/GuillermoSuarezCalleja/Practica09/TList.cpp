@@ -8,7 +8,7 @@ int TList::mPush(const char* cValue)
 	nNode->next = nullptr;
 	nNode->prev = tail;
 
-	if (!head)
+	if (!head) // si el head está vacio le asigno el nodo
 	{
 		head = nNode;
 	}
@@ -18,21 +18,21 @@ int TList::mPush(const char* cValue)
 	}
 	tail = nNode;
 
-	nNode->id = iSize;
+	nNode->id = iSize; // se le asigna un id al nodo dependiendo del tamaño del mismo
 
 	++iSize;
-	return head->id;
-}
+	return head->id; // devuelve el identificador que se le ha asignado al nodo
+} // metodo para insertar nodos a la lista
 
 int TList::mSize()
 {
 	return iSize;
-}
+} // metodo para devolver el tamaño de la lista
 
 const char* TList::mFirst()
 {
 	return head->cData;
-}
+} // metodo para mostrar el primer nodo de la lista
 
 const char* TList::mNext()
 {
@@ -40,7 +40,7 @@ const char* TList::mNext()
 	tmp = head->next;
 
 	return tmp->cData;
-}
+} // metodo para mostrar el segundo nodo de la lista
 
 const char* TList::mPop()
 {
@@ -56,7 +56,7 @@ const char* TList::mPop()
 	}
 
 	return cString;
-}
+} // metodo para borrar el primer nodo de la lista
 
 void TList::mShowList()
 {
@@ -68,7 +68,7 @@ void TList::mShowList()
 		std::cout << "Element " << aux.head->id << ": " << aux.head->cData << std::endl;
 		aux.head = aux.head->next;
 	}
-}
+} // metodo para mostrar todos los nodos de la lista desde head en adelante
 
 void TList::mReset()
 {
@@ -80,4 +80,4 @@ void TList::mReset()
 		head = head->next;
 		delete tmp;
 	}
-}
+} // metodo para borrar todos los nodos de la lista 

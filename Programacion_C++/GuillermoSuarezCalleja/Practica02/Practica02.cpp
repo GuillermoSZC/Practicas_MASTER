@@ -78,20 +78,16 @@ void Parte4()
 	std::vector<char> vCadena(iTam);
 
 
-	for (int x = 0, y = iTam - 1; x < iTam - 1; ++x, --y)
+	for (int x = 0, y = iTam-1; x < iTam - 1; ++x, --y)
 	{
 		vCadena[y] = *(ptr + x);
-		// std::cout << vCadena[y] << " , " << cCadena[x] << std::endl;
 	}
 
-	printf("%s", "Cadena invertida: ");
-	for (int i = 0; i < sizeof(cCadena); ++i)
+	std::cout<<"Cadena invertida: ";
+	for (int i = 0; i < iTam; ++i)
 	{
-		if (vCadena[i] != '\0') 
-		{
-			*(ptr + i) = vCadena[i];
-			printf("%c", *(ptr + i));
-		}
+		*(ptr + i) = vCadena[i];
+		printf("%c", *(ptr + i));
 	}
 	printf("\n");
 }

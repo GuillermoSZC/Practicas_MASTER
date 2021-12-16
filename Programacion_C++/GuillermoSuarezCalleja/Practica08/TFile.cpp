@@ -1,13 +1,23 @@
 #include"FileManager.h"
 #include <iostream>
 
+FileManager::FileManager()
+{
+	printf("Object FileManager created.\n");
+}
+
+FileManager::~FileManager()
+{
+	printf("Object FileManager deleted.\n");
+}
+
 void* FileManager::mOpenFile(const char* _cName, const char* _cMode)
 {
 	FILE* file;
 	fopen_s(&file, _cName, _cMode);
 
 	return file;
-}
+} // metodo para abrir el fichero
 
 unsigned int FileManager::mReadFile(void* _vFile, char* _cBuffer, char*& _cAux)
 {
@@ -30,7 +40,7 @@ unsigned int FileManager::mReadFile(void* _vFile, char* _cBuffer, char*& _cAux)
 	mCloseFile(_vFile);
 
 	return uiNumChars;
-}
+} // metodo que devuelve el numero de caracteres leidos del fichero
 
 const char* FileManager::mWriteFile(void* _vFile, const char* _cBuffer, unsigned int _uiSize)
 {
@@ -41,7 +51,7 @@ const char* FileManager::mWriteFile(void* _vFile, const char* _cBuffer, unsigned
 	mCloseFile(_vFile);
 
 	return _cBuffer;
-}
+} // metodo para escribir en el fichero, devuelve la cadena escrita
 
 void FileManager::mCloseFile(void* _vFile)
 {
@@ -49,4 +59,4 @@ void FileManager::mCloseFile(void* _vFile)
 	// std::cout << "File closed." << std::endl;
 
 	fclose(file);
-}
+} // metodo para cerrar el fichero
