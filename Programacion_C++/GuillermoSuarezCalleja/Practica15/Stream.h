@@ -3,7 +3,7 @@
 class CStream
 {
 protected:
-	typedef CStream tdCStream;
+	typedef CStream tdCStream; // super
 
 public:
 	CStream();

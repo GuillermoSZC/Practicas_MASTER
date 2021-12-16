@@ -5,7 +5,7 @@ class CCom : public CStream
 {
 public:
 	CCom();
-	~CCom() override;
+	virtual ~CCom() override;
 
 	virtual void vmOpen(const char*) override;
 	virtual void vmRead(const char*) override;

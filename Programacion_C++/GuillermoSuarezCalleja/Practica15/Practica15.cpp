@@ -33,21 +33,21 @@ int main()
 
 	std::cout << "\n";
 	for (int i = 0; i < 3; ++i)
+
 	{
 		std::cout << "\n";
 		obj[i]->vmOpen("prueba.txt");
 		obj[i]->vmRead("prueba.txt");
 		obj[i]->vmWrite("prueba.txt");
 		obj[i]->vmClose("prueba.txt");
-		std::cout << "\nEXPLICIT CALL OF CSTREAM..\n"; 
-		// Llamo unicamente a la clase CStream de manera explicita (necesario ->CStream::)
+		std::cout << "\nEXPLICIT CALL OF CSTREAM..\n";
 		obj[i]->CStream::vmOpen("prueba.txt");
 		obj[i]->CStream::vmRead("prueba.txt");
 		obj[i]->CStream::vmWrite("prueba.txt");
 		obj[i]->CStream::vmClose("prueba.txt");
 	}
+	
 	std::cout << "\n";
-
 /*
 	Se borran los objetos de la clase CStream y los de las respectivas
 	clases Hijas

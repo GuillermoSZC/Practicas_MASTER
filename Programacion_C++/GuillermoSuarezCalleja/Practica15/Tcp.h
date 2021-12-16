@@ -5,7 +5,7 @@ class CTcp : public CStream
 {
 public:
 	CTcp();
-	~CTcp() override;
+	virtual ~CTcp() override;
 
 	virtual void vmOpen(const char*) override;
 	virtual void vmRead(const char*) override;

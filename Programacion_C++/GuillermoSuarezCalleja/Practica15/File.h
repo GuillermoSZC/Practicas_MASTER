@@ -5,7 +5,7 @@ class CFile : public CStream
 {
 public:
 	CFile();
-	~CFile() override;
+	virtual ~CFile() override;
 
 	virtual void vmOpen(const char*) override;
 	virtual void vmRead(const char*) override;
