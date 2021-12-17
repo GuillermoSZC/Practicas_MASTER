@@ -1,18 +1,7 @@
 #include "ball.h"
 #include <cstdio>
 
-Ball::Ball()
-{
-	pos = 0.f;
-	vel = 0.f;
-	gfx = 0;
-	radius = 0.f;
-}
 
-Ball::~Ball()
-{
-	printf("Object Ball destroyed.\n");
-}
 
 vec2 Ball::getPos()
 {
@@ -54,8 +43,10 @@ void Ball::setGfx(GLuint _glGfx)
 	gfx = _glGfx;
 }
 
-void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i)
+void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS)
 {
+	for (unsigned int i = 0; i < NUM_BALLS; i++)
+	{
 		// New Pos.
 		// multiplico por fixedVel para cambiar la velocidad de las bolas y *7 para que vayan mas rapido 
 		vec2 newpos = balls[i].pos + balls[i].vel * (elapsed * 10);
@@ -81,7 +72,7 @@ void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i
 		}
 		else {
 			// Rebound!
-			balls[i].vel *= -1.f; 
+			balls[i].vel *= -1.f;
 			balls[colliding_ball].vel *= -1.f;
 		}
 
@@ -92,17 +83,5 @@ void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i
 		if ((balls[i].pos.y >= SCR_HEIGHT) || (balls[i].pos.y < 0)) {
 			balls[i].vel.y *= -1.0;
 		}
-}
-
-void Ball::LogicSlot(float elapsed, Ball balls[], const unsigned int NUM_BALLS, int i, timeCounter* _Timer)
-{
-
-	 _Timer->initSlotsToProcess();
-	while (_Timer->processSlots())
-	{
-		Slot(elapsed, balls, NUM_BALLS, i);
-		_Timer->fixElapsed();
 	}
-	_Timer->calcFPS();
-	
 }

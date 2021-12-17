@@ -7,7 +7,6 @@ float frec = 0.f;
 
 timeCounter::timeCounter()
 {
-	previousTime = 0.f;
 	currentTime = 0.f;
 	fixedTick = 1.f / 60.f;
 	elapsedTime = 0.f;
@@ -19,7 +18,6 @@ timeCounter::timeCounter()
 }
 timeCounter::~timeCounter() { printf("obj timeCounter deleted.\n"); } // Destructor
 
-float timeCounter::getPreviousTime() { return previousTime; }
 float timeCounter::getCurrentTime() { return currentTime; }
 float timeCounter::getFixedTick() const { return fixedTick; }
 float timeCounter::getElapsedTime() { return elapsedTime; }
@@ -31,9 +29,10 @@ float timeCounter::getCapTime() const { return capTime; }
 
 void timeCounter::initSlotsToProcess()
 {
-	currentTime = timeCounter::GetTime();
-	elapsedTime = currentTime*1.5 - previousTime*1.5; // ? mult 1.5f porque?? @TODO: 
-	previousTime = currentTime;
+	elapsedTime += GetTime();
+	currentTime += fixedTick;
+	//elapsedTime = currentTime*1.5 - previousTime*1.5; // ? mult 1.5f porque??
+	//previousTime = currentTime;
 }
 
 bool timeCounter::processSlots()
@@ -43,11 +42,10 @@ bool timeCounter::processSlots()
 
 void timeCounter::initPrevs()
 {
-	previousTime = timeCounter::GetTime();
-	prevFps = timeCounter::GetTime();
+	prevFps = GetTime();
 }
 
-void timeCounter::fixElapsed()
+void timeCounter::fixElapsed() // @TODO:
 {
 	if (elapsedTime >= capTime)
 	{ // si ha superado el limite lo igualo a fixedTick
@@ -61,8 +59,9 @@ void timeCounter::fixElapsed()
 	currentFps++;
 }
 
-void timeCounter::calcFPS()
+void timeCounter::calcFPS() // @TODO: CALCULAR FRAMES
 {
+
 	if (currentTime - prevFps >= 1.0f)
 	{
 		frames = currentFps;
@@ -85,11 +84,16 @@ void timeCounter::StartCounter()
 
 	QueryPerformanceCounter(&li);
 	counterStart = li.QuadPart;
+	elapsedTime = 0.0f;
 }
 
+// Elapsed
 float timeCounter::GetTime()
 {
 	LARGE_INTEGER li;
 	QueryPerformanceCounter(&li);
-	return float(li.QuadPart - counterStart) / frec;
+	float time = float(li.QuadPart - counterStart);
+	counterStart = li.QuadPart;
+
+	return time / frec;
 }

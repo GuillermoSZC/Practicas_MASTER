@@ -1,13 +1,22 @@
 #include "gameManager.h"
 #include<iostream>
+#include"timeCounter.h"
+// extern tBalls balls;
 
-extern tBalls balls;
 
-void gameManager::mLogic(float elapsed)
+void gameManager::LogicSlot(timeCounter* oTimer)
 {
-	// Run balls
-	for (unsigned int i = 0; i < NUM_BALLS; i++)
+	oTimer->initSlotsToProcess();
+
+	while (oTimer->processSlots())
 	{
-		balls[i].Slot(elapsed, balls, NUM_BALLS, i);
+		// Logic
+		balls->Slot(oTimer->getFixedTick(), balls, NUM_BALLS);
+		// mLogic(oTimer->elapsedTime); // paso elapsed para el punto 2.7 de la practica
+
+		oTimer->fixElapsed();
+		// SYS_Sleep(17);
 	}
+
+	oTimer->calcFPS();
 }

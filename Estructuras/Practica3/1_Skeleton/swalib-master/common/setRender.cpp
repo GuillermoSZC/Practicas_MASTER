@@ -1,6 +1,8 @@
-#include "gameManager.h"
+#include "Render.h"
 
-void gameManager::mSetUpRender()
+
+Render* Render::instance = nullptr;
+void Render::mSetUpRender()
 {
 	glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT); // Sets up clipping.
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);	// Specifies clear values for the color buffers.

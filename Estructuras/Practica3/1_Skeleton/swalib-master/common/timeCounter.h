@@ -1,9 +1,8 @@
-#pragma once void initPrevs()
+#pragma once 
 
 class timeCounter
 {
 public:
-	float previousTime;
 	float currentTime;
 	float fixedTick;
 	float elapsedTime;
@@ -16,7 +15,6 @@ public:
 	timeCounter();
 	~timeCounter();
 
-	float getPreviousTime();
 	float getCurrentTime();
 	float getFixedTick() const;
 	float getElapsedTime();
@@ -34,4 +32,5 @@ public:
 	void calcFPS();
 	void StartCounter();
 	float GetTime();
+
 };

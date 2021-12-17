@@ -1,11 +1,14 @@
 #include "gameManager.h"
 #include<iostream>
+#include"Render.h"
+
 
 
 int Main(void)
 {
-	gameManager* oManager = new gameManager(); // Create obj gameManager()
+	gameManager* oManager = gameManager::getInstance();
 	timeCounter* oTimer = new timeCounter();
+	Render* oRender = Render::getInstance();
 
 	oTimer->StartCounter();
 	oTimer->initPrevs();
@@ -14,35 +17,24 @@ int Main(void)
 	oManager->init();
 
 	// Set up rendering.
-	oManager->mSetUpRender();
+	oRender->mSetUpRender();
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
 
-		oTimer->initSlotsToProcess();
-
-		while (oTimer->processSlots())
-		{
-			// Logic
-			oManager->mLogic(oTimer->elapsedTime); // paso elapsed para el punto 2.7 de la practica
-			oTimer->fixElapsed();
-			// SYS_Sleep(17);
-		}
-
-		oTimer->calcFPS();
+		oManager->LogicSlot(oTimer);
 
 		// Render
-		oManager->mRender(oTimer->currentTime, oTimer->frames, oTimer->logicTime);
+		oRender->mRender(oTimer->currentTime, oTimer->frames, oTimer->logicTime);
 
 		SYS_Pump();
 	}
 
+	oManager->deleteBalls();
 	// End app.
 	oManager->shutdownRender();
 	// Unload textures.
 	oManager->shutdown();
 
-	delete oManager; // Delete obj gameManager()
-	oManager = nullptr;
-
+	
 	return 0;
 }

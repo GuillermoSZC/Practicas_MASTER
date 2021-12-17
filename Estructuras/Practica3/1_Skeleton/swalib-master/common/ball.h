@@ -7,15 +7,23 @@
 
 class Ball	// Info Ball
 {
+
 private:
 	vec2   pos;	// Position.
 	vec2   vel;	// Velocity.
 	GLuint gfx;	// OpenGL for id. for visualization purposes. 
 	float  radius;	// Radius.
+	
+
 public:
+	Ball()
+	{
+		pos = 0.f;
+		vel = 0.f;
+		gfx = 0;
+		radius = 0.f;
+	}
 	// getters
-	Ball();
-	~Ball();
 	vec2 getPos();
 	vec2 getVel();
 	float getRadius();
@@ -28,6 +36,6 @@ public:
 	void setGfx(GLuint);
 
 	// Other funcions..
-	void Slot(float, Ball[], const unsigned int, int);
+	void Slot(float, Ball[], const unsigned int);
 	void LogicSlot(float, Ball[], const unsigned int, int, timeCounter*);
 };

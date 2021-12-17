@@ -1,23 +1,26 @@
 #include "gameManager.h"
+#include "Render.h"
 #include <string>
 
-extern tBalls balls;
 
-void gameManager::mRender(float time, float frames, float logicTime)
+// extern tBalls balls;
+
+void Render::mRender(float time, float frames, float logicTime)
 {
+	gameManager* mg = gameManager::getInstance();
 	// Render
 	glClear(GL_COLOR_BUFFER_BIT);	// Clear color buffer to preset values.
 
 	// Render backgground
 	for (int i = 0; i <= SCR_WIDTH / 128; i++) {
 		for (int j = 0; j <= SCR_HEIGHT / 128; j++) {
-			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), texbkg);
+			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), mg->texbkg);
 		}
 	}
 
 	// Render balls
-	for (unsigned int i = 0; i < NUM_BALLS; i++) {
-		CORE_RenderCenteredSprite(balls[i].getPos(), vec2(balls[i].getRadius() * 2.f, balls[i].getRadius() * 2.f), balls[i].getGfx());
+	for (unsigned int i = 0; i < mg->NUM_BALLS; i++) {
+		CORE_RenderCenteredSprite(mg->balls[i].getPos(), vec2(mg->balls[i].getRadius() * 2.f, mg->balls[i].getRadius() * 2.f), mg->balls[i].getGfx());
 	}
 
 	std::string sTime = std::to_string((int)time);
@@ -27,17 +30,19 @@ void gameManager::mRender(float time, float frames, float logicTime)
 	std::string	sLogicTime = std::to_string((int)logicTime);
 	
 	// Text
-
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD!");
+	DrawString("HELLO WORLD!", 96, 16);
 	std::string sCad = "TIME: " + sTime;
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - 300, 450), sCad.c_str());
+	DrawString(sCad, 300, 450);
 	sCad = "FPS: " + sFrames;
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - -190, 450), sCad.c_str());
+	DrawString(sCad, -190, 450);
 	sCad = "L-TIME: " + sLogicTime;
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - 300, 420), sCad.c_str());
-	
-
+	DrawString(sCad, 300, 420);
 
 	// Exchanges the front and back buffers
 	SYS_Show();
+}
+
+void Render::DrawString(std::string _name, int width, int height)
+{
+	FONT_DrawString(vec2(SCR_WIDTH / 2 - width, height), _name.c_str());
 }

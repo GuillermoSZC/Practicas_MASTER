@@ -141,6 +141,7 @@
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\gameManager.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
+    <ClInclude Include="..\..\common\Render.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
     <ClInclude Include="..\..\common\timeCounter.h" />

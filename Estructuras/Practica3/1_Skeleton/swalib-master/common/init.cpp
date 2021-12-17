@@ -1,6 +1,7 @@
 #include "gameManager.h"
 
-extern tBalls balls;
+// extern tBalls balls;
+gameManager* gameManager::m_instance = nullptr;
 
 void gameManager::init()
 {
