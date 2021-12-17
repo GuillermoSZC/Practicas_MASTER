@@ -5,14 +5,13 @@ template<typename T1>
 class  TList
 {
 private:
-	
 	struct Nodo 
 	{
-		
 		T1 cData;
 		Nodo* next;
 		Nodo* prev;
 		int id;
+
 		Nodo(T1 value) 
 		{
 			id = 0;

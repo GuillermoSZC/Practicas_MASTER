@@ -77,7 +77,6 @@ void Parte4()
 	int iTam = sizeof(cCadena);
 	std::vector<char> vCadena(iTam);
 
-
 	for (int x = 0, y = iTam-1; x < iTam - 1; ++x, --y)
 	{
 		vCadena[y] = *(ptr + x);

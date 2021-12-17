@@ -1,7 +1,1 @@
-﻿  Com.cpp
-  File.cpp
-  Practica15.cpp
-  Stream.cpp
-  Tcp.cpp
-  Generating Code...
-  Practica15.vcxproj -> C:\Users\guillermo.suarez\OneDrive - U-tad\Documents\GitHub\Practicas_MASTER\Programacion_C++\GuillermoSuarezCalleja\Debug\Practica15.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppClean.targets(77,5): warning : The process cannot access the file 'c:\users\soker\documents\github\practicas_master\programacion_c++\guillermosuarezcalleja\practica15\debug\vc142.idb' because it is being used by another process.

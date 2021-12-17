@@ -112,7 +112,7 @@ TList* TList::mPushNumsOfFile(const char* _cName, char *& _aux)
 				if (*(cBuffer + i - uiValComma) == ',' || *(cBuffer + i) == ',')
 				{
 					uiSize = strlen(sCad.c_str());
-					_aux = new char[uiSize + 1];
+					_aux = new char[uiSize + 1]; 
 					*(_aux + uiSize) = '\0';
 					
 					for (unsigned int j = 0; j < uiSize; ++j)
