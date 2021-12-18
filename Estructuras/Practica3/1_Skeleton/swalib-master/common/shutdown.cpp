@@ -1,11 +1,6 @@
-#include "gameManager.h"
+#include "WorldEngine.h"
 
-void gameManager::shutdown()
+void WorldEngine::shutdown()
 {
 	FONT_End();
-}
-
-void gameManager::deleteBalls()
-{
-	delete balls;
 }

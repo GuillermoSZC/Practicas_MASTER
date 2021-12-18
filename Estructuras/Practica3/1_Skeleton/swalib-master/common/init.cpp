@@ -1,9 +1,8 @@
-#include "gameManager.h"
+#include "WorldEngine.h"
 
-// extern tBalls balls;
-gameManager* gameManager::m_instance = nullptr;
+WorldEngine* WorldEngine::m_instance = nullptr; // inicializo la instancia del objeto singleton para poder usarlo
 
-void gameManager::init()
+void WorldEngine::init()
 {
 	FONT_Init();	// Characters and symbols inicialization to draw on screen.
 	for (unsigned int i = 0; i < NUM_BALLS; i++) {

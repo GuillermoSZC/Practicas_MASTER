@@ -1,8 +1,7 @@
-#include "Render.h"
+#include "RenderEngine.h"
 
-
-Render* Render::instance = nullptr;
-void Render::mSetUpRender()
+RenderEngine* RenderEngine::instance = nullptr;
+void RenderEngine::mSetUpRender()
 {
 	glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT); // Sets up clipping.
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);	// Specifies clear values for the color buffers.

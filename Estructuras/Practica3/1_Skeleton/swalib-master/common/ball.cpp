@@ -1,47 +1,27 @@
-#include "ball.h"
+#include "Ball.h"
 #include <cstdio>
 
-
-
-vec2 Ball::getPos()
+Ball::Ball()
 {
-	return pos;
+	pos = 0.f;
+	vel = 0.f;
+	gfx = 0;
+	radius = 0.f;
 }
-
-float Ball::getRadius()
+Ball::~Ball()
 {
-	return radius;
+	printf("Obj ball deleted.\n");
 }
-
-vec2 Ball::getVel()
-{
-	return vel;
-}
-
-GLuint Ball::getGfx()
-{
-	return gfx;
-}
-
-void Ball::setPos(vec2 _vPos)
-{
-	pos = _vPos;
-}
-
-void Ball::setVel(vec2 _vVel)
-{
-	vel = _vVel;
-}
-
-void Ball::setRadius(float _fRadius)
-{
-	radius = _fRadius;
-}
-
-void Ball::setGfx(GLuint _glGfx)
-{
-	gfx = _glGfx;
-}
+// getters
+vec2 Ball::getPos() { return pos; }
+float Ball::getRadius() { return radius; }
+vec2 Ball::getVel() { return vel; }
+GLuint Ball::getGfx() { return gfx; }
+// setters
+void Ball::setPos(vec2 _vPos) { pos = _vPos; }
+void Ball::setVel(vec2 _vVel) {	vel = _vVel; }
+void Ball::setRadius(float _fRadius) {	radius = _fRadius; }
+void Ball::setGfx(GLuint _glGfx) {	gfx = _glGfx; }
 
 void Ball::Slot(float elapsed, Ball balls[], const unsigned int NUM_BALLS)
 {

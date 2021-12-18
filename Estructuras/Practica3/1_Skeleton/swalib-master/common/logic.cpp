@@ -1,22 +1,16 @@
-#include "gameManager.h"
+#include "WorldEngine.h"
 #include<iostream>
-#include"timeCounter.h"
-// extern tBalls balls;
+#include"TimeCounter.h"
 
 
-void gameManager::LogicSlot(timeCounter* oTimer)
+void WorldEngine::LogicSlot(TimeCounter* oTimer)
 {
 	oTimer->initSlotsToProcess();
 
-	while (oTimer->processSlots())
+	while (oTimer->processSlots()) // si elapsedTime es mayor o igual que fixedTick..
 	{
-		// Logic
 		balls->Slot(oTimer->getFixedTick(), balls, NUM_BALLS);
-		// mLogic(oTimer->elapsedTime); // paso elapsed para el punto 2.7 de la practica
-
 		oTimer->fixElapsed();
 		// SYS_Sleep(17);
 	}
-
-	oTimer->calcFPS();
 }

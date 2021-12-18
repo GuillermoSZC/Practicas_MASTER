@@ -120,31 +120,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\common\ball.cpp" />
+    <ClCompile Include="..\..\common\Ball.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
-    <ClCompile Include="..\..\common\example.cpp" />
+    <ClCompile Include="..\..\common\BuclePrincipal.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\init.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\logic.cpp" />
-    <ClCompile Include="..\..\common\render.cpp" />
+    <ClCompile Include="..\..\common\RenderEngine.cpp" />
     <ClCompile Include="..\..\common\setRender.cpp" />
     <ClCompile Include="..\..\common\shutdown.cpp" />
     <ClCompile Include="..\..\common\shutdownRender.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
-    <ClCompile Include="..\..\common\timeCounter.cpp" />
+    <ClCompile Include="..\..\common\TimeCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\common\ball.h" />
+    <ClInclude Include="..\..\common\Ball.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\font.h" />
-    <ClInclude Include="..\..\common\gameManager.h" />
+    <ClInclude Include="..\..\common\WorldEngine.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
-    <ClInclude Include="..\..\common\Render.h" />
+    <ClInclude Include="..\..\common\RenderEngine.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
-    <ClInclude Include="..\..\common\timeCounter.h" />
+    <ClInclude Include="..\..\common\TimeCounter.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

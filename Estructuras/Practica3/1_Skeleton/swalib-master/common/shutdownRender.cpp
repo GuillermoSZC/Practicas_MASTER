@@ -1,6 +1,6 @@
-#include "gameManager.h"
+#include "WorldEngine.h"
 
-void gameManager::shutdownRender()
+void WorldEngine::shutdownRender()
 {
 	CORE_UnloadPNG(texbkg);
 	CORE_UnloadPNG(texsmallball);
