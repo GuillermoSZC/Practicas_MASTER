@@ -199,7 +199,7 @@ struct Exercise2 {
 		camYaw = fmodf(camYaw, 360);
 
 		// TODO: 
-		camNode.rotation = quat_from_axis_deg(camPitch, 1.f, 0.f, 0.f) * quat_from_axis_deg(camYaw, 0.f, 1.f, 0.f);
+		camNode.rotation = quat_from_axis_deg(camYaw, 0.f, 1.f, 0.f) * quat_from_axis_deg(camPitch, 1.f, 0.f, 0.f);
 		
 		// TODO: use keys to modify cameraPosition here
 		if (glfwGetKey(window, GLFW_KEY_UP))
@@ -210,13 +210,27 @@ struct Exercise2 {
 		{
 			cameraPosition.z += 1.f;
 		}
+		if (glfwGetKey(window, GLFW_KEY_LEFT))
+		{
+			cameraPosition.x -= 1.f;
+		}
+		else if (glfwGetKey(window, GLFW_KEY_RIGHT))
+		{
+			cameraPosition.x += 1.f;
+		}
 		camNode.position = cameraPosition;
-
+		// @EJERCICIO 2:
+		// Se calcula la posicion a donde se quiere que apunte la cámara y luego se multiplica por -1.f 
+		// para que se ponga desde la posicion inversa y si hubiese un personaje por ejemplo la camara apuntaria desde detrás de el.
 		// mat4 cameraMatrix = translate( identity_mat4(), cameraPosition*-1.f);
 		mat4 cameraMatrix = camNode.worldInverseMatrix;
 
 		mat4 gridMatrix = translate(identity_mat4(), vec3(0,0,0));
 
+		// EJERCICIO 3.4 
+		// Para rotar el diorama rotamos el meshGroupNode
+		// meshYaw se va sumando por elapsed (multiplica por 10 para que vaya mas rapido) 
+		// y va rotando sobre el eje Z (0,1,0)
 		meshGroupNode.rotation = quat_from_axis_deg(meshYaw += elapsed_seconds * 10, 0, 1, 0);
 
 		// whole scene hierarchy is updated here from root downwards
@@ -226,7 +240,7 @@ struct Exercise2 {
 
 		camera.get_shader_uniforms(mesh_shader_index);
 		camera.set_shader_uniforms(mesh_shader_index, camNode.localInverseMatrix);
-		// TODO: 
+		// TODO: EJERCICIO 3.4
 		// Hay que usar '..InverseMatrix' porque sino dejan de verse las texturas
 		camera.set_shader_uniforms(lines_shader_index, camNode.localInverseMatrix);
 		
