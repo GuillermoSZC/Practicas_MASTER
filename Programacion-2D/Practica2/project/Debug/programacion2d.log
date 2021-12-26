@@ -1,8 +1,8 @@
 ﻿  main.cpp
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(43,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(50,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(51,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(10,9): warning C4101: 'xpos': unreferenced local variable
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(10,15): warning C4101: 'ypos': unreferenced local variable
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(17,18): warning C4101: 'textAngle': unreferenced local variable
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(53,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(67,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(68,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(16,9): warning C4101: 'xpos': unreferenced local variable
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(16,15): warning C4101: 'ypos': unreferenced local variable
+C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\src\main.cpp(23,18): warning C4101: 'textAngle': unreferenced local variable
   programacion2d.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Programacion-2D\Practica2\project\Debug\programacion2d.exe
