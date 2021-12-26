@@ -37,7 +37,6 @@ int main() {
 	{
 		printf("error init");
 	}
-	
 
 	window = glfwCreateWindow(width, height, "P1", NULL, NULL);
 	if (!window)
