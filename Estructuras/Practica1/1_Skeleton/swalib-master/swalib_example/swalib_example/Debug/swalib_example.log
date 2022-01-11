@@ -1,4 +1,0 @@
-﻿  example.cpp
-  sys_win.cpp
-  Generating Code...
-C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Estructuras\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(41): error C4700: uninitialized local variable 'playerX' used

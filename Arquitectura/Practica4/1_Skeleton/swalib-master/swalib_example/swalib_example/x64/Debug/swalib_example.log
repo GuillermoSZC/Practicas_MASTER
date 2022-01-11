@@ -1,0 +1,14 @@
+﻿  Ball.cpp
+  BuclePrincipal.cpp
+  RenderEngine.cpp
+  TimeCounter.cpp
+  init.cpp
+  logic.cpp
+  setRender.cpp
+  shutdown.cpp
+  shutdownRender.cpp
+  stdafx.cpp
+  sys_win.cpp
+  Generating Code...
+  LINK : C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Arquitectura\Practica3\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe not found or not built by the last incremental link; performing full link
+  swalib_example.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Arquitectura\Practica3\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe
