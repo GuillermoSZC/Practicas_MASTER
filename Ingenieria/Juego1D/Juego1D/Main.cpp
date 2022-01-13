@@ -1,143 +1,88 @@
 #include<iostream>
-#include<Windows.h>
 #include<conio.h>
+#include<Windows.h>
 #include<vector>
+#include<algorithm>
+#include"Entity.h"
+
+void DrawCharacter()
+{
+
+	printf("x");
+}
 
 int main()
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	// int character = 20;
+	int WIDTH = 80;
+	int bulletCont = 0;
+	bool exit = false, val = false;
+	int contador = 0;
 
-	bool exit = false, shootL = false, shootR = false;
-
-	unsigned int contador = 0;
-	unsigned int WIDTH = 100;
-	unsigned int char_x = 50;
-
-	std::vector<unsigned int> bullet_left;
-	std::vector<unsigned int> bullet_right;
-
-	unsigned int enemy_left = 0;
-	unsigned int enemy_right = WIDTH;
-
-	unsigned int contBalasL = 0;
-	unsigned int contBalasR = 0;
+	Character* character = new Character(40);
+	Bullet* bullet = new Bullet();
+	Enemy* enemy = new Enemy();
 
 	do
 	{
-		// Render
+		//Render
 		printf("\r");
-		for (unsigned int i = 0; i < WIDTH; ++i)
+		for (int i = 0; i < WIDTH; i++)
 		{
-			if (i == char_x)
-			{
-				SetConsoleTextAttribute(hConsole, 10);
-				printf("x");
-			}
-			else if (shootL)
-			{
-				SetConsoleTextAttribute(hConsole, 14);
-				printf("<");
-			}
-			else if (shootR)
-			{
-				SetConsoleTextAttribute(hConsole, 14);
-				printf(">");
-			}
-			else if (i == enemy_left)
-			{
-				SetConsoleTextAttribute(hConsole, 12);
-				printf("*");
-			}
-			else if (i == enemy_right)
-			{
-				SetConsoleTextAttribute(hConsole, 12);
-				printf("*");
-			}
-			else
-			{
-				SetConsoleTextAttribute(hConsole, 1);
-				printf("_");
-			}
+			if (i == character->GetPosition()) printf("x");
+			else if (i == bullet->GetPosition() && !val) printf("<");
+			else if (i == enemy->GetPosition() && !val) printf("*");
+			else printf("_");
 		}
-		SetConsoleTextAttribute(hConsole, 14);
+
 		printf(" SCORE: %02d", contador);
-		// Process Input
+		
+
+		//Process Input
 		if (_kbhit())
 		{
-			char ch = _getch();
-			switch(ch)
+			char key = _getch();
+			switch (key)
 			{
-			case 'a': if (char_x > 0) char_x--; break;
-			case 'd': if (char_x < WIDTH - 1) char_x++; break;
+			case 'a': if (character->GetPosition() > 0) character->DecreaseMovement(); break;
+			case 'd': if (character->GetPosition() < WIDTH - 1) character->IncreaseMovement(); break;
 			case 'j': 
-				if (contBalasL < 5)
+				if (bullet->GetPosition() < 0)
 				{
-					shootL = true;
-					bullet_left.push_back(char_x - 1);
-					contBalasL++;
+					bullet->SetPosition(character->GetPosition());
 				}
-				break;
-			case 'k': 
-				if (contBalasR < 5)
-				{
-					shootR = true;
-					bullet_right.push_back(char_x + 1);
-					contBalasR++;
-				} 
-				break;
-			case 27: if (char_x > 0) exit = true; break;
+			break;				
+			case 27: exit = true; break;
 			}
 		}
 
-		// Move Bullets
-		if (bullet_left.size() > 0)
-		{
-			if (bullet_left[contBalasL] >= 0)
-			{
-				bullet_left[contBalasL]--;
-			}
-		}
+		if (bullet->GetPosition() >= 0) bullet->DecreaseMovement();
 
-		if (bullet_right.size() > 0)
-		{
-			if (bullet_right[contBalasR] >= 0) 
-			{
-				bullet_right[contBalasR]++;
-			}
-		}
+		// Enemy Movement
+		enemy->IncreaseMovement();
 
-		// Move Enemies
-		if (enemy_left >= 0) enemy_left++;
-		if (enemy_right >= 0) enemy_right--;
+		
 
-		// Kill Enemies and destroy bullets 
-		// @TODO:
-		if (bullet_left.size() > 0 && bullet_left[contBalasL] == enemy_left)
-		{
-			bullet_left.pop_back();
-			contador++;
-		}
-		if (bullet_right.size() > 0 && bullet_right[contBalasR] == enemy_right)
-		{
-			bullet_right.pop_back();
-			contador++;
-		}
-
-		// Dead
-		if (enemy_left >= char_x || enemy_right <= char_x)
+		if (enemy->GetPosition() == character->GetPosition())
 		{
 			exit = true;
 		}
-
-		shootL = false;
-		shootR = false;
+		if (enemy->GetPosition() == bullet->GetPosition())
+		{
+			contador++;
+			val = true;
+		}
 
 		Sleep(100);
 	} while (!exit);
 
 	system("cls");
-	SetConsoleTextAttribute(hConsole, 12);
-	printf("                                                    YOU LOSE\n\n\n\n\n\n\n\n");
-	
-	return 0;
+	printf("                                                  GAME OVER\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+	delete character;
+	character = nullptr;
+	delete bullet;
+	bullet = nullptr;
+	delete enemy;
+	enemy = nullptr;
 }
