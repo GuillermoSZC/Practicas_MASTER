@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-
+// ENTITY FUNCTIONS
 
 #pragma region CHARACTER
 void Character::SetPosition(int _Position)
@@ -37,14 +37,30 @@ void Bullet::SetPosition(int _Position)
 #pragma endregion
 
 #pragma region ENEMY
-void Enemy::IncreaseMovement()
+Enemy::Enemy(bool _Spawn, int _End) 
+	: spawn(_Spawn),
+	position(0)
 {
-	position++;
+	if (spawn)
+	{
+		position = 0;
+	}
+	else if (!spawn)
+	{
+		position = _End;
+	}
 }
 
-void Enemy::DecreaseMovement()
+void Enemy::IncreaseMovement()
 {
-	position--;
+	if (spawn) 
+	{
+		position++;
+	} 
+	else if (!spawn)
+	{
+		position--;
+	}
 }
 
 void Enemy::SetPosition(int _Position)

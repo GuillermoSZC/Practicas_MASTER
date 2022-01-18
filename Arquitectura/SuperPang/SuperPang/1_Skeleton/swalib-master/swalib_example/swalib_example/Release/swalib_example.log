@@ -1,0 +1,18 @@
+﻿  Ball.cpp
+  Components.cpp
+  core.cpp
+  BuclePrincipal.cpp
+  EntityComponent.cpp
+  font.cpp
+  lodepng.cpp
+  MessageManager.cpp
+  RenderEngine.cpp
+  stdafx.cpp
+  sys_win.cpp
+  TimeCounter.cpp
+  WorldEngine.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 534 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  swalib_example.vcxproj -> C:\Users\Soker\Documents\GitHub\Practicas_MASTER\Arquitectura\Practica4\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe

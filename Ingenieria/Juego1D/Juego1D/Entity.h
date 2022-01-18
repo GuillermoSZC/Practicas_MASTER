@@ -8,8 +8,7 @@ public:
 
 	virtual void SetPosition(int _Position) = 0;
 	virtual void IncreaseMovement() = 0;
-	virtual void DecreaseMovement() = 0;
-};
+}; // INTERFACE
 
 class Character : public Entity
 {
@@ -17,13 +16,15 @@ private:
 	int position;
 
 public:
+	// CONSTRUCTOR AND DESTRUCTOR
 	Character(int _Pos) : position(_Pos) {  }
+	~Character() { }
 
 	int GetPosition() { return position; }
+	void DecreaseMovement();
 
 	virtual void SetPosition(int _Position) override;
 	virtual void IncreaseMovement() override;
-	virtual void DecreaseMovement() override;
 };
 
 class Bullet : public Entity
@@ -32,26 +33,32 @@ private:
 	int position;
 
 public:
-	Bullet() : position(-1) {  }
+	// CONSTRUCTOR AND DESTRUCTOR
+	Bullet(int pos) : position(pos) {  }
+	~Bullet() { }
 
 	int GetPosition() { return position; }
+	void DecreaseMovement();
 
 	virtual void SetPosition(int _Position) override;
 	virtual void IncreaseMovement() override;
-	virtual void DecreaseMovement() override;
 };
 
 class Enemy : public Entity
 {
 private:
 	int position;
-
+	bool spawn;
+	
 public:
-	Enemy() : position(-1) {  }
+	// CONSTRUCTOR AND DESTRUCTOR
+	Enemy(bool _Spawn, int _End);
+	~Enemy() { }
 
+	// GETTERS
 	int GetPosition() { return position; }
-
+	bool GetSpawn() { return spawn; }
+	
 	virtual void SetPosition(int _Position) override;
 	virtual void IncreaseMovement() override;
-	virtual void DecreaseMovement() override;
 };

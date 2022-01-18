@@ -13,18 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\AuxFunctions">
+      <UniqueIdentifier>{b63d13a8-7f87-4aaa-a977-48319320bf98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AuxFunctions">
+      <UniqueIdentifier>{64481cd2-e779-432f-8db4-649d5173f729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{4416d019-578b-4a17-a179-1c6604d7fea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{f6abb97c-6a95-419f-8086-ffa6e96e69d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PrintFuncts.cpp">
+      <Filter>Source Files\AuxFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundFuncts.cpp">
+      <Filter>Source Files\AuxFunctions</Filter>
+    </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicManager.cpp">
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SoundFuncts.h">
+      <Filter>Header Files\AuxFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintFuncts.h">
+      <Filter>Header Files\AuxFunctions</Filter>
+    </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicManager.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
